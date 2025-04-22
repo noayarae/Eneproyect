@@ -1,0 +1,534 @@
+:root {
+    --primary-blue: #002855;
+    --secondary-blue: #0056b3;
+    --accent-gold: #FFD700;
+    --dark-gold: #B8860B;
+    --light-gray: #f5f5f5;
+    --dark-gray: #333;
+    --white: #ffffff;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    --gold-shadow: 0px 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #003366, #0056b3);
+    color: white;
+    transition: 0.4s;
+}
+
+/* Sidebar - Mantenemos el mismo estilo que en ajustes.css */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 270px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1c1c1c, #333);
+    padding: 20px 0;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.4);
+    transition: all 0.3s ease;
+    z-index: 100;
+    overflow-x: hidden;
+}
+
+.sidebar-header {
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+    margin-bottom: 15px;
+}
+
+.sidebar-header h2 {
+    color: #FFD700;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    white-space: nowrap;
+}
+
+.user-info {
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.user-info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent-gold);
+}
+
+.user-avatar i {
+    font-size: 40px;
+    color: var(--accent-gold);
+}
+
+.user-details {
+    flex: 1;
+    min-width: 0; /* Permite que el texto se ajuste */
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--accent-gold);
+    white-space: normal; /* Permite múltiples líneas */
+    word-break: break-word; /* Rompe palabras largas */
+}
+
+.user-email, .user-position {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.8);
+    white-space: normal;
+    word-break: break-all; /* Para emails largos */
+    margin-top: 3px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar li {
+    margin: 6px 0;
+}
+
+.sidebar li.logout-item {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px 12px 16px;
+    margin: 4px 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 0 8px 8px 0;
+    transition: all 0.3s ease;
+    gap: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Franja dorada curveada */
+.sidebar a::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 70%;
+    width: 5px;
+    background: #FFD700;
+    border-radius: 0 10px 10px 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+}
+
+.sidebar a:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.sidebar a:hover::before {
+    height: 85%;
+    width: 6px;
+}
+
+.sidebar a.active {
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.15), rgba(255, 215, 0, 0.05));
+}
+
+.sidebar a.active::before {
+    height: 90%;
+    width: 7px;
+    background: linear-gradient(to bottom, #FFD700, #ffea00);
+}
+
+.sidebar a i {
+    width: 24px;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    transition: transform 0.3s;
+}
+
+.sidebar a:hover i {
+    transform: scale(1.1);
+}
+
+/* Contenido principal */
+.content {
+    flex: 1;
+    padding: 40px;
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    transition: all 0.3s ease;
+    overflow-y: auto;
+}
+
+/* Encabezado del mapa */
+.mapa-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.mapa-header h1 {
+    font-size: 36px;
+    color: #FFD700;
+    font-weight: bold;
+    text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.6);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 15px;
+}
+
+/* Controles del mapa */
+.map-controls {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.12);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #FFD700;
+    box-shadow: var(--gold-shadow);
+}
+
+.search-container {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-container i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-gold);
+    font-size: 18px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px 40px 12px 45px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    outline: none;
+    transition: 0.3s ease;
+}
+
+.search-container input:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: var(--gold-shadow);
+}
+
+.search-container input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.custom-select {
+    width: 200px;
+    padding: 12px 15px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    outline: none;
+    transition: 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23FFD700'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 20px;
+}
+
+.custom-select:focus {
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: var(--gold-shadow);
+}
+
+.btn-primary {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background: var(--accent-gold);
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-primary:hover {
+    background: var(--dark-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+#locate-me {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    background: var(--dark-gold);
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#locate-me:hover {
+    background: var(--accent-gold);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+/* Mapa */
+#map {
+    width: 100%;
+    height: 600px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    margin-bottom: 30px;
+}
+
+/* Leyenda */
+.map-legend {
+    background: rgba(255, 255, 255, 0.12);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid #FFD700;
+    box-shadow: var(--gold-shadow);
+}
+
+.map-legend h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #FFD700;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.map-legend ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.map-legend li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+}
+
+.legend-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.legend-icon.residential {
+    background: #4CAF50;
+}
+
+.legend-icon.commercial {
+    background: #2196F3;
+}
+
+.legend-icon.industrial {
+    background: #F44336;
+}
+
+/* Estilos para los popups del mapa */
+.leaflet-popup-content {
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.popup-content h3 {
+    color: var(--primary-blue);
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.popup-content p {
+    margin-bottom: 8px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.popup-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.popup-btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.popup-btn.directions {
+    background: var(--secondary-blue);
+    color: white;
+}
+
+.popup-btn.directions:hover {
+    background: var(--primary-blue);
+}
+
+.popup-btn.details {
+    background: var(--accent-gold);
+    color: #333;
+}
+
+.popup-btn.details:hover {
+    background: var(--dark-gold);
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+    }
+    
+    .sidebar.show {
+        transform: translateX(0);
+    }
+    
+    .mobile-menu-toggle {
+        display: block;
+    }
+    
+    .content {
+        margin-left: 0;
+        width: 100%;
+        padding: 20px;
+        padding-top: 70px;
+    }
+    
+    .map-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-container {
+        max-width: 100%;
+    }
+    
+    .custom-select {
+        width: 100%;
+    }
+
+    .user-profile {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .user-avatar i {
+        font-size: 50px;
+    }
+    
+    .user-details {
+        width: 100%;
+    }
+}
+
+@media (max-width: 768px) {
+    .mapa-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    #map {
+        height: 400px;
+    }
+    
+    .map-legend ul {
+        gap: 15px;
+    }
+
+    .user-name {
+        font-size: 15px;
+    }
+    
+    .user-email, .user-position {
+        font-size: 12px;
+    }
+}
