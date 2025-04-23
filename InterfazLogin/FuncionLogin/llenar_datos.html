@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completar Información</title>
+    <link rel="stylesheet" href="llenar_datos.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Completar Información</h2>
+        <p>Por favor, completa los siguientes datos para continuar.</p>
+        
+        <form id="formDatos">
+            <div class="form-group">
+                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+            </div>
+
+            <div class="form-group">
+                <label for="telefono">Teléfono:</label>
+                <input type="tel" id="telefono" name="telefono" placeholder="Ej: +51 987654321" required>
+            </div>
+
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" placeholder="Ej: Av. Siempre Viva 742" required>
+            </div>
+
+            <div class="button-group">
+                <button type="button" id="btnCompletar">Completar</button>
+                <button type="reset" id="btnLimpiar">Limpiar</button>
+                <button type="button" id="btnSalir">Salir</button>
+            </div>
+        </form>
+    </div>
+
+    <script src="llenar_datos.js"></script>
+</body>
+</html>
