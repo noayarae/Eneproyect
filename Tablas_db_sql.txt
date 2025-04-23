@@ -1,0 +1,48 @@
+Tabla para el calendario
+
+CREATE TABLE eventos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id VARCHAR(50) NOT NULL,  
+    cliente_id VARCHAR(20) NOT NULL,   
+    tipo ENUM('consulta', 'credito diario', 'credito semanal', 'credito anual', 'reunion') NOT NULL,
+    fecha_inicio DATE NOT NULL,
+    hora_inicio TIME NOT NULL,
+    duracion INT NOT NULL,           
+    notas TEXT,
+    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+ALTER TABLE eventos MODIFY COLUMN fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
+ALTER TABLE eventos ADD COLUMN fecha_actualizacion DATETIME NULL;
+ALTER TABLE eventos	MODIFY COLUMN tipo VARCHAR(125) NOT NULL;
+
+Tabla para el registro inicial 
+
+CREATE TABLE `wp_employees` (
+  `Id` int NOT NULL AUTO_INCREMENT,
+  `Nombre` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `Apellido` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `dni` varchar(8) COLLATE utf8mb4_general_ci NOT NULL,
+  `Correo` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
+  `Cargo` varchar(120) COLLATE utf8mb4_general_ci NOT NULL,
+  `Usuario` varchar(60) COLLATE utf8mb4_general_ci NOT NULL,
+  `Password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `reset_token` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `token_expiration` datetime DEFAULT NULL,
+  `estado` enum('pendiente','aprobado','rechazado') COLLATE utf8mb4_general_ci DEFAULT 'pendiente',
+  `fecha_de_registro` datetime DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  UNIQUE KEY `Usuario` (`Usuario`),
+  UNIQUE KEY `dni_UNIQUE` (`dni`),
+  UNIQUE KEY `Correo_UNIQUE` (`Correo`)
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+Tabla para la validación final
+
+CREATE TABLE `wp_datos_usuarios` (
+  `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `telefono` varchar(20) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `direccion` varchar(255) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`dni`),
+  CONSTRAINT `wp_datos_usuarios_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `wp_employees` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
