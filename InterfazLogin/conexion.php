@@ -2,7 +2,7 @@
 // Configuración de la conexión a la base de datos
 $servidor = "localhost";
 $usuario = "root";
-$contrasena = "SEB23NOV2003_"; // Asegúrate de que esta es la contraseña correcta
+$contrasena = ""; 
 $baseDatos = "eneproyect_bd";
 
 // Crear la conexión
