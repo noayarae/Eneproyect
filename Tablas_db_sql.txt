@@ -1,4 +1,6 @@
+------------------------------------------------------------------------------------------
 Tabla para el calendario
+------------------------------------------------------------------------------------------
 
 CREATE TABLE eventos (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -15,7 +17,9 @@ ALTER TABLE eventos MODIFY COLUMN fecha_actualizacion DATETIME DEFAULT CURRENT_T
 ALTER TABLE eventos ADD COLUMN fecha_actualizacion DATETIME NULL;
 ALTER TABLE eventos	MODIFY COLUMN tipo VARCHAR(125) NOT NULL;
 
+------------------------------------------------------------------------------------------
 Tabla para el registro inicial 
+------------------------------------------------------------------------------------------
 
 CREATE TABLE `wp_employees` (
   `Id` int NOT NULL AUTO_INCREMENT,
@@ -36,7 +40,13 @@ CREATE TABLE `wp_employees` (
   UNIQUE KEY `Correo_UNIQUE` (`Correo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+ALTER TABLE wp_employees 
+ADD COLUMN ultimo_cambio_pass DATETIME DEFAULT NULL,
+ADD COLUMN last_login DATETIME DEFAULT NULL;
+
+--------------------------------------------------------------------------------------------
 Tabla para la validación final
+--------------------------------------------------------------------------------------------
 
 CREATE TABLE `wp_datos_usuarios` (
   `dni` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
@@ -46,3 +56,16 @@ CREATE TABLE `wp_datos_usuarios` (
   PRIMARY KEY (`dni`),
   CONSTRAINT `wp_datos_usuarios_ibfk_1` FOREIGN KEY (`dni`) REFERENCES `wp_employees` (`dni`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--------------------------------------------------------------------------------------------
+Tabla para control de logins
+--------------------------------------------------------------------------------------------
+
+CREATE TABLE logs_accesos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  ip VARCHAR(45) NOT NULL,
+  user_agent TEXT,
+  fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES wp_employees(id)
+);
