@@ -1,0 +1,99 @@
+[24-Apr-2025 08:06:57 Europe/Berlin] [2025-04-24 08:06:57] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:06:57 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:06:57 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$ySsiDEsulUMnwM04\/GejSOlOGP8OoETemya27fI2wFr5y0IFFMxwq","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:06:57 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:06:57"}
+[24-Apr-2025 08:06:57 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:10:12 Europe/Berlin] [2025-04-24 08:10:12] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:10:12 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:10:12 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:10:12 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:10:12"}
+[24-Apr-2025 08:10:12 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:12:06 Europe/Berlin] [2025-04-24 08:12:06] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:12:06 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:12:06 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:12:06 Europe/Berlin] Contraseña incorrecta para usuario: POTATO123&&
+[24-Apr-2025 08:13:08 Europe/Berlin] [2025-04-24 08:13:08] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:13:08 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:13:08 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:13:08 Europe/Berlin] Contraseña incorrecta para usuario: POTATO123&&
+[24-Apr-2025 08:13:20 Europe/Berlin] [2025-04-24 08:13:20] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:13:20 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:13:20 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:13:21 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:13:21"}
+[24-Apr-2025 08:13:21 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:13:47 Europe/Berlin] [2025-04-24 08:13:47] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:13:47 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:13:47 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:13:47 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:13:47"}
+[24-Apr-2025 08:13:47 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:13:57 Europe/Berlin] [2025-04-24 08:13:57] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:13:57 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:13:57 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:13:57 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:13:57"}
+[24-Apr-2025 08:13:57 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:15:37 Europe/Berlin] [2025-04-24 08:15:37] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:15:37 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:15:37 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:15:37 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:15:37"}
+[24-Apr-2025 08:15:37 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:15:42 Europe/Berlin] [2025-04-24 08:15:42] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:15:42 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:15:42 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:15:42 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:15:42"}
+[24-Apr-2025 08:15:42 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:20:29 Europe/Berlin] [2025-04-24 08:20:29] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:20:29 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:20:29 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:20:29 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:20:29"}
+[24-Apr-2025 08:20:29 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:23:17 Europe/Berlin] [2025-04-24 08:23:17] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:23:17 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:23:17 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:23:17 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:23:17"}
+[24-Apr-2025 08:23:17 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:24:00 Europe/Berlin] [2025-04-24 08:24:00] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:24:00 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:24:00 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:24:00 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:24:00"}
+[24-Apr-2025 08:24:00 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:24:12 Europe/Berlin] [2025-04-24 08:24:12] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:24:12 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:24:12 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:24:12 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:24:12"}
+[24-Apr-2025 08:24:12 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 08:24:22 Europe/Berlin] [2025-04-24 08:24:22] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:24:22 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:24:22 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:24:22 Europe/Berlin] Contraseña incorrecta para usuario: POTATO123&&
+[24-Apr-2025 08:24:29 Europe/Berlin] [2025-04-24 08:24:29] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:24:29 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:24:29 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:24:30 Europe/Berlin] Contraseña incorrecta para usuario: POTATO123&&
+[24-Apr-2025 08:24:34 Europe/Berlin] [2025-04-24 08:24:34] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:24:34 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:24:34 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:24:34 Europe/Berlin] Contraseña incorrecta para usuario: POTATO123&&
+[24-Apr-2025 08:26:25 Europe/Berlin] [2025-04-24 08:26:25] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:26:25 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:26:25 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:26:25 Europe/Berlin] Contraseña incorrecta para usuario: POTATO123&&
+[24-Apr-2025 08:26:33 Europe/Berlin] [2025-04-24 08:26:33] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 08:26:33 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 08:26:33 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 08:26:33 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 08:26:33"}
+[24-Apr-2025 08:26:33 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 09:27:29 Europe/Berlin] [2025-04-24 09:27:29] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 09:27:29 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 09:27:29 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 09:27:29 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 09:27:29"}
+[24-Apr-2025 09:27:29 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 09:27:41 Europe/Berlin] [2025-04-24 09:27:41] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 09:27:41 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 09:27:41 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 09:27:41 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 09:27:41"}
+[24-Apr-2025 09:27:41 Europe/Berlin] Autenticación exitosa para: POTATO123&&
+[24-Apr-2025 09:30:32 Europe/Berlin] [2025-04-24 09:30:32] === INICIO PROCESAR_LOGIN ===
+[24-Apr-2025 09:30:32 Europe/Berlin] Preparando consulta para usuario: POTATO123&&
+[24-Apr-2025 09:30:32 Europe/Berlin] Datos usuario: {"id":117,"nombre":"Juan","apellido":"Noa Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"POTATO123&&","dni":"75572534","password":"$2y$10$R5dhuE4HHxVS8yMVyrPTiu9YDQ\/DckTD.3fxdkX6.RP1EhfCmiuxS","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[24-Apr-2025 09:30:32 Europe/Berlin] Registrando acceso: {"user_id":117,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/135.0.0.0 Safari\/537.36","fecha":"2025-04-24 09:30:32"}
+[24-Apr-2025 09:30:32 Europe/Berlin] Autenticación exitosa para: POTATO123&&

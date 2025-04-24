@@ -2,9 +2,11 @@
 require('../../conexion.php');
 require_once('funciones.php');
 
-session_start(); // Iniciar sesión para acceder a $_SESSION['User_ID']
+session_start();
 
-// Función para mostrar alertas con redirección opcional
+// Incluir SweetAlert
+echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+
 function show_alert($message, $type, $redirect = null) {
     echo "<script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -22,68 +24,79 @@ function show_alert($message, $type, $redirect = null) {
     exit();
 }
 
-// Incluir SweetAlert en el HTML
-echo '<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>';
+// Obtener el token de la sesión (no de POST)
+if (!isset($_SESSION['reset_token'])) {
+    show_alert("Token no proporcionado o sesión inválida.", "error", "/InterfazLogin/FuncionLogin/login.html");
+}
 
-// Asegurar que el token se recibe antes de usarlo
-$token = $_POST['token'] ?? $_GET['token'] ?? null;
+$token = $_SESSION['reset_token'];
+$user_id = $_SESSION['reset_user_id'] ?? null;
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($token)) {
-    // Obtener el nombre del usuario si está logueado
-    $idUsuario = $_SESSION['User_ID'] ?? null;
-    $nombreUsuario = $idUsuario ? hallarNombre($idUsuario) : "Usuario Desconocido";
-
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $new_password = $_POST['new_password'] ?? '';
     $confirm_password = $_POST['confirm_password'] ?? '';
 
-    // Validar que las contraseñas coincidan
+    // Validar coincidencia de contraseñas
     if ($new_password !== $confirm_password) {
         show_alert("Las contraseñas no coinciden.", "error");
     }
 
-    // Validaciones de seguridad para la nueva contraseña
+    // Validar fortaleza de contraseña
+    $errors = [];
     if (strlen($new_password) < 10) {
-        show_alert("La contraseña debe tener al menos 10 caracteres.", "error");
-    } elseif (!preg_match('/[A-Z]/', $new_password) || !preg_match('/[a-z]/', $new_password)) {
-        show_alert("La contraseña debe tener al menos una letra mayúscula y una minúscula.", "error");
-    } elseif (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $new_password)) {
-        show_alert("La contraseña debe tener al menos un carácter especial.", "error");
-    } elseif (!preg_match('/[0-9]/', $new_password)) {
-        show_alert("La contraseña debe tener al menos un número.", "error");
+        $errors[] = "La contraseña debe tener al menos 10 caracteres.";
+    }
+    if (!preg_match('/[A-Z]/', $new_password) || !preg_match('/[a-z]/', $new_password)) {
+        $errors[] = "Debe contener al menos una mayúscula y una minúscula.";
+    }
+    if (!preg_match('/[0-9]/', $new_password)) {
+        $errors[] = "Debe contener al menos un número.";
+    }
+    if (!preg_match('/[!@#$%^&*(),.?":{}|<>]/', $new_password)) {
+        $errors[] = "Debe contener al menos un carácter especial.";
     }
 
-    // Buscar el usuario con el token
-    $stmt = $conn->prepare("SELECT id, correo, password FROM wp_employees WHERE reset_token = ?");
-    $stmt->bind_param("s", $token);
+    if (!empty($errors)) {
+        show_alert(implode("<br>", $errors), "error");
+    }
+
+    // Verificar token válido (usando el user_id de sesión para mayor seguridad)
+    $stmt = $conn->prepare("SELECT id, password FROM wp_employees WHERE id = ? AND reset_token = ? AND token_expiration > NOW()");
+    $stmt->bind_param("is", $user_id, $token);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 0) {
-        show_alert("Token no válido o ha expirado.", "error","/InterfazLogin/FuncionLogin/login.html");
+        show_alert("Token inválido o expirado.", "error", "/InterfazLogin/FuncionLogin/login.html");
     }
-    
-    $row = $result->fetch_assoc();
-    $user_id = $row['id'];
 
-    // Verificar si la nueva contraseña es igual a la anterior
+    $row = $result->fetch_assoc();
+
+    // Verificar que no sea la misma contraseña
     if (password_verify($new_password, $row['password'])) {
         show_alert("La nueva contraseña no puede ser igual a la anterior.", "error");
     }
 
-    // Hashear la nueva contraseña y actualizar la base de datos
-    $hashed_password = password_hash($new_password, PASSWORD_BCRYPT);
-    $stmt = $conn->prepare("UPDATE wp_employees SET password = ?, reset_token = NULL, token_expiration = NULL WHERE id = ?");
-    $stmt->bind_param("si", $hashed_password, $user_id);
+    // Actualizar contraseña
+    $hashed_password = password_hash($new_password, PASSWORD_DEFAULT);
+    $update_stmt = $conn->prepare("UPDATE wp_employees SET password = ?, reset_token = NULL, token_expiration = NULL WHERE id = ?");
+    $update_stmt->bind_param("si", $hashed_password, $user_id);
 
-    if ($stmt->execute() && $stmt->affected_rows > 0) {
-        show_alert("Tu contraseña ha sido restablecida exitosamente.", "success", "https://eneproyect.com/InterfazLogin/FuncionLogin/login.html");
+    if ($update_stmt->execute() && $update_stmt->affected_rows > 0) {
+        // Limpiar la sesión después de éxito
+        unset($_SESSION['reset_token']);
+        unset($_SESSION['reset_user_id']);
+        unset($_SESSION['reset_token_expiration']);
+        
+        show_alert("Contraseña actualizada exitosamente.", "success", "https://eneproyect.com/InterfazLogin/FuncionLogin/login.html");
     } else {
-        show_alert("Hubo un error al actualizar la contraseña.", "error");
+        show_alert("Error al actualizar la contraseña.", "error");
     }
 
     $stmt->close();
+    $update_stmt->close();
     $conn->close();
 } else {
-    show_alert("No se ha recibido el token en el formulario.", "error");
+    show_alert("Método no permitido.", "error", "/InterfazLogin/FuncionLogin/login.html");
 }
 ?>
