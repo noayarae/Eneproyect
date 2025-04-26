@@ -40,7 +40,7 @@ $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     /* $fecha_acto = date('Y-m-d H:i:s'); */
-    $fecha_acto = $_POST["fecha_acto"];
+    $fecha_acto = $_POST["fecha_acto"]; /* asta mientras esta esto */
 
     // Obtener la fecha de inicio del caso (fecha_acto del primer registro)
     $sql_select_inicio = "SELECT fecha_acto, saldo_int FROM etapa_prejudicial WHERE id_cliente = $id_cliente ORDER BY id ASC LIMIT 1";
@@ -113,42 +113,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $fecha_clave = $_POST["fecha_clave"];
         $accion_fecha_clave = $_POST["accion_fecha_clave"];
         $actor = $_POST["actor"];
-        
+
         // Definir las notas del evento
-        $notas_evento = "Acción requerida: " . $accion_fecha_clave.
-                        "\nDescripción: " . $descripcion .
-                        "\nCliente: " . $cliente['nombre'] . " " . $cliente['apellidos'] . 
-                        "\nActor: " . $actor;
-        
+        $notas_evento = "Acción requerida: " . $accion_fecha_clave .
+            "\nDescripción: " . $descripcion .
+            "\nCliente: " . $cliente['nombre'] . " " . $cliente['apellidos'] .
+            "\nActor: " . $actor;
+
         // Mapear el tipo de evento según el tipo de crédito
-        $tipoEventoMapeado = $acto; 
-               
+        $tipoEventoMapeado = $acto;
+
         // Insertar evento en el calendario
         $sql_evento = "INSERT INTO eventos (
-            usuario_id, 
-            cliente_id, 
-            tipo, 
-            fecha_inicio, 
-            hora_inicio, 
-            duracion, 
-            notas
-        ) VALUES (?, ?, ?, ?, '09:00:00', 60, ?)";
-        
+        usuario_id, 
+        cliente_id, 
+        tipo, 
+        fecha_inicio, 
+        hora_inicio, 
+        duracion, 
+        notas
+    ) VALUES (?, ?, ?, ?, '09:00:00', 60, ?)";
+
         $stmt = $conn->prepare($sql_evento);
-        $stmt->bind_param("sssss", 
+        $stmt->bind_param(
+            "sssss",
             $_SESSION['usuario'],
             $cliente['dni'],
             $tipoEventoMapeado,   // Tipo de evento 
             $fecha_clave,         // Fecha clave del formulario
             $notas_evento         // Notas con la acción y detalles
         );
-        
+
         if ($stmt->execute()) {
             $message = "Registro exitoso y evento agregado al calendario";
         } else {
             $message = "Registro exitoso, pero error al agregar evento: " . $stmt->error;
         }
-        
         $stmt->close();
     } else {
         $message = "Error: " . $sql_insert . "<br>" . $conn->error;
@@ -227,6 +227,7 @@ $conn->close();
 <html>
 
 <head>
+    <title>Registro de Etapas Pre-Judicial y Judicial</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="validacion_etapas.js" defer></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -411,6 +412,12 @@ $conn->close();
                     <input type="hidden" name="id_cliente" value="<?php echo htmlspecialchars($id_cliente); ?>">
                     <h4>Etapa Judicial</h4>
                     <div id="message"></div>
+                    <!-- borrar de aqui, solo esta por mientras -->
+                    <div class="mb-2">
+                        <label class="fw-bold">Fecha Acto:</label>
+                        <input type="date" name="fecha_judicial" required class="form-control">
+                    </div>
+                    <!-- asta aqui -->
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <label class="fw-bold">Acto:</label>

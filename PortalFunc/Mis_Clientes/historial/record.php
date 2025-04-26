@@ -201,7 +201,7 @@ $conn->close();
         function agregarHistoria() {
             var idCliente = <?php echo json_encode($id_cliente); ?>;
             if (idCliente) {
-                window.location.href = '../pre_judicial/registro_prejudicial.php?id_cliente=' + encodeURIComponent(idCliente);
+                window.location.href = '/proyecto_financiera/pre_judicial/registro_prejudicial.php?id_cliente=' + encodeURIComponent(idCliente);
             } else {
                 alert("Error: ID del cliente no disponible.");
             }

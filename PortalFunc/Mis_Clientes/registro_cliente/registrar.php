@@ -54,26 +54,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($conn->query($sql) === TRUE) {
         // Definir las notas del evento
-        $notas_evento = "Acción requerida: " . $accion_fecha_clave . 
-                    "\nCliente: " . $nombre . " " . $apellidos . 
-                    "\nGestor: " . $gestor;
+        $notas_evento = "Acción requerida: " . $accion_fecha_clave .
+            "\nCliente: " . $nombre . " " . $apellidos .
+            "\nGestor: " . $gestor;
 
         // Insertar también en el calendario de eventos
         $sql_evento = "INSERT INTO eventos (
-            usuario_id, 
-            cliente_id, 
-            tipo, 
-            fecha_inicio, 
-            hora_inicio, 
-            duracion, 
-            notas
-        ) VALUES (?, ?, ?, ?, '09:00:00', 60, ?)";
-        
+        usuario_id, 
+        cliente_id, 
+        tipo, 
+        fecha_inicio, 
+        hora_inicio, 
+        duracion, 
+        notas
+    ) VALUES (?, ?, ?, ?, '09:00:00', 60, ?)";
         $stmt = $conn->prepare($sql_evento);
-        
+
         $tipoEventoMapeado = $accion_fecha_clave;
-                
-        if (!$stmt->bind_param("sssss", 
+
+        if (!$stmt->bind_param(
+            "sssss",
             $_SESSION['usuario'],
             $dni,
             $tipoEventoMapeado,
@@ -85,14 +85,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: registrar.php");
             exit();
         }
-        
+
         if (!$stmt->execute()) {
             error_log("Error en la inserción: " . $stmt->error);
             $_SESSION['mensaje'] = "Error al registrar en calendario: " . $stmt->error;
             header("Location: registrar.php");
             exit();
         }
-        
+
         $_SESSION['mensaje'] = "Registro exitoso y fecha agregada al calendario";
         header("Location: index.php");
         exit();
@@ -302,7 +302,7 @@ $conn->close();
                     </div>
                 </div>
                 <div class="col-md-12 border p-3">
-                    <h4>Personal Asignado</h4>
+                <h4>Personal Asignado</h4>
                     <div class="mb-2">
                         <label class="fw-bold">Gestor:</label>
                         <input type="text" name="gestor" required class="form-control"

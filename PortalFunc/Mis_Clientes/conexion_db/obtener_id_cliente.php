@@ -16,4 +16,4 @@ if ($dni) {
 
 echo json_encode(['id_cliente' => $id_cliente]);
 $conn->close();
-?> 
+?>

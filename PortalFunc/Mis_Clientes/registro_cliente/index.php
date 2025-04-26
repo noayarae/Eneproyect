@@ -23,11 +23,11 @@
                             <!-- El formulario de registro se cargará aquí por defecto -->
                             <?php include 'registrar.php'; ?>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
                 <div class="informe-button-container">
-                        <button type="button" class="btn btn-warning informe-button">INFORME</button>
-                    </div>
+                    <button type="button" class="btn btn-warning informe-button" onclick="window.location.href='../reports/reporte.php'">REPORTE</button>
+                </div>
             </div>
         </div>
 
@@ -313,6 +313,31 @@
                 .then(response => response.json()) // Asegúrate de que la respuesta se convierta a JSON
                 .then(data => cargarDatosClientes(data));
         };
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            const day = String(date.getDate()).padStart(2, '0');
+            const month = String(date.getMonth() + 1).padStart(2, '0'); // Los meses son base 0
+            const year = date.getFullYear();
+            return `${day}-${month}-${year}`;
+        }
+
+        function cargarDatosClientes(data) {
+            const listaClientes = document.getElementById('listaClientes');
+            listaClientes.innerHTML = data.map(cliente => `
+        <tr>
+            <td>${cliente.nombre}</td>
+            <td>${cliente.apellidos}</td>
+            <td>${cliente.dni}</td>
+            <td>${cliente.telefono}</td>
+            <td>${formatNumber(parseFloat(cliente.monto))}</td>
+            <td>${formatNumber(parseFloat(cliente.saldo))}</td>
+            <td>${formatDate(cliente.fecha_clave)}</td>
+            <td>${cliente.accion_fecha_clave}</td>
+            <td><button onclick="mostrarCliente('${cliente.dni}')">Seleccionar</button></td>
+        </tr>
+        `).join('');
+        }
     </script>
 </body>
 
