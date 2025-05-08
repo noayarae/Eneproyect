@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Iniciar Sesión</title>
-    <link rel="stylesheet" href="login_style.css">
+    <link rel="stylesheet" href="login.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
 </head>
 <body>
     <div class="login-container">
         <div class="login">
             <h2>Iniciar Sesión</h2>
-            <form action="procesar_login.php" method="POST" id="loginForm">
+            <form action="login.php" method="POST" id="loginForm">
                 <input type="text" name="usuario" placeholder="Usuario" id="usuario" required>
 
                 <div class="password-container">
@@ -26,7 +25,7 @@
 
             <div class="forgot-password">
                 <p>¿Olvidaste tu contraseña?</p>
-                <form id="resetForm" action = "/InterfazLogin/FuncionLogin/enviarCorreo.php" method="POST">
+                <form id="resetForm" action="/InterfazLogin/FuncionLogin/password_recovery.php" method="POST">
                     <input type="email" name="email" placeholder="Introduce tu correo" id="email">
                     <button type="submit" class="reset" id="resetButton">Restablecer Contraseña</button>
                 </form>
@@ -35,10 +34,20 @@
             <div class="register-option">
                 <p>¿Aún no tienes una cuenta? <a href="/InterfazLogin/FuncionRegistro/registro.html">Regístrate aquí</a></p>
             </div>
+            
+            <!-- Botón Salir que redirige a eneproyect.com -->
+            <button id="exitButton" class="exit-btn">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </button>
         </div>
     </div>
 
     <script>
+        // Redirección al hacer clic en Salir
+        document.getElementById('exitButton').addEventListener('click', function() {
+            window.location.href = 'https://eneproyect.com';
+        });
+
         fetch('/InterfazLogin/FuncionLogin/Auth/auth.php')
             .then(response => response.text())
             .then(isAuthenticated => {
@@ -47,15 +56,13 @@
                 }
             });
 
-        // Verifica si el parámetro 'inactividad' está en la URL
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('inactividad')) {
-            // Muestra la alerta después de la redirección por inactividad
             Swal.fire({
                 icon: 'warning',
                 title: 'Inactividad detectada',
                 text: 'Debido a la inactividad, has sido redirigido a la página de login.',
-                timer: 3000, // La alerta se mantendrá visible durante 3 segundos
+                timer: 3000,
             });
         }
     </script>

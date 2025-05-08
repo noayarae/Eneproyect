@@ -1,0 +1,172 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72, #94c0f7);
+    color: white;
+}
+
+/* Contenedor del login */
+.login-container {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 350px;
+    text-align: center;
+}
+
+/* Título */
+.login h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+
+/* Inputs */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus {
+    outline: 2px solid #007BFF;
+}
+
+/* Contenedor de contraseña */
+.password-container {
+    position: relative;
+}
+
+.password-container input {
+    width: 100%;
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    cursor: pointer;
+}
+
+/* Botón de login */
+.submit {
+    width: 100%;
+    padding: 12px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.submit:hover {
+    background: #0056b3;
+}
+
+/* Sección de recuperación */
+.forgot-password,
+.register-option {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.forgot-password input {
+    width: calc(100% - 20px);
+}
+
+.reset {
+    width: 100%;
+    padding: 10px;
+    background: #007BFF;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.reset:hover {
+    background: #0056b3;
+}
+
+/* Enlace de registro */
+.register-option a {
+    color: #00c3ff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.register-option a:hover {
+    text-decoration: underline;
+}
+
+#togglePass {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #bbb; /* Mejor contraste */
+    transition: color 0.3s;
+}
+
+#togglePass:hover {
+    color: #007BFF;
+}
+
+.exit-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.exit-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.exit-btn i {
+    font-size: 16px;
+}
+
+/* Responsive */
+@media (max-width: 400px) {
+    .login-container {
+        width: 90%;
+    }
+}

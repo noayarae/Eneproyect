@@ -59,7 +59,7 @@ $estado = $row['estado'];
 if ($estado !== 'aprobado') {
     $_SESSION['mensaje'] = "Tu cuenta aún está en proceso de verificación.";
     $_SESSION['tipo'] = "warning";
-    $_SESSION['redirect'] = "logout.php";  // Mejor cerrar sesión
+    $_SESSION['redirect'] = "logout.php"; 
     header("Location: mensaje.php");
     exit();
 }

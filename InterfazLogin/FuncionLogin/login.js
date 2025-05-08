@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const resetButton = document.getElementById("resetButton");
     const emailInput = document.getElementById("email");
 
-    // 🔹 Función para validar email
+    // Función para validar email
     function validateEmail(email) {
         let regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("¿Existe validateEmail?", typeof validateEmail); // 🔹 Depuración
 
-    // 🔹 Funcionalidad de mostrar/ocultar contraseña
+    // Funcionalidad de mostrar/ocultar contraseña
     if (passwordInput && togglePass) {
         console.log("Ícono de ojo encontrado:", togglePass);
         togglePass.addEventListener("click", function () {
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("No se encontró el input de contraseña o el icono.");
     }
 
-    // 🔹 Validación antes de enviar el formulario de login
+    // Validación antes de enviar el formulario de login
     if (loginButton && loginForm) {
         loginButton.addEventListener("click", function (event) {
             if (!usernameInput.value.trim() || !passwordInput.value.trim()) {
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("No se encontró el botón o formulario de login.");
     }
 
-    // 🔹 Validación para restablecer contraseña
+    // Validación para restablecer contraseña
     if (resetButton && emailInput) {
         resetButton.addEventListener("click", function (event) {
             event.preventDefault(); // Evita el envío automático

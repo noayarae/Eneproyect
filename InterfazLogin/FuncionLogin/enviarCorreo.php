@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../conexion.php';
-require __DIR__ . '/vendor/autoload.php';
+
 use SendGrid\Mail\Mail;
 
 header('Content-Type: text/html; charset=UTF-8'); // Configurar UTF-8
@@ -74,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['email']) && !empty($_P
         header("Location: mensaje.php");
         exit();
     } else {
-        $_SESSION['mensaje'] = "Correo no registrado.";
+        $_SESSION['mensaje'] = "Correo no válido. Verifique el formato e intente de nuevo";
         $_SESSION['tipo'] = "warning";
         header("Location: mensaje.php");
         exit();
