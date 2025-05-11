@@ -1,4 +1,7 @@
 <?php
+require '../../../InterfazLogin/conexion.php';
+$usuario = $_SESSION['usuario'];
+
 function formatDate($date)
 {
     return date('d-m-Y', strtotime($date));
@@ -41,18 +44,32 @@ function getMeses()
     ];
 }
 
-function generarReporte($mes, $anio, $conn)
+function generarReporte($mes, $anio, $conn,$usuario)
 {
     $fecha_inicio = $anio . '-' . $mes . '-01';
     $fecha_fin = date('Y-m-t', strtotime($fecha_inicio));
 
-    $sql_prejudicial = "SELECT c.*, p.* FROM etapa_prejudicial p JOIN clientes c ON p.id_cliente = c.id_cliente WHERE p.fecha_acto BETWEEN '$fecha_inicio' AND '$fecha_fin' ORDER BY c.nombre, c.apellidos, p.fecha_acto";
+    $sql_prejudicial = "
+                    SELECT c.*, p.* FROM etapa_prejudicial p 
+                    JOIN clientes c ON p.id_cliente = c.id_cliente 
+                    WHERE p.fecha_acto BETWEEN '$fecha_inicio' AND '$fecha_fin' 
+                    AND c.gestor = '$usuario' 
+                    ORDER BY c.nombre, c.apellidos, p.fecha_acto";
     $result_prejudicial = $conn->query($sql_prejudicial);
 
-    $sql_judicial = "SELECT c.*, j.* FROM etapa_judicial j JOIN clientes c ON j.id_cliente = c.id_cliente WHERE j.fecha_judicial BETWEEN '$fecha_inicio' AND '$fecha_fin' ORDER BY c.nombre, c.apellidos, j.fecha_judicial";
+    $sql_judicial = "
+        SELECT c.*, j.*
+        FROM etapa_judicial j
+        JOIN clientes c ON j.id_cliente = c.id_cliente
+        WHERE j.fecha_judicial BETWEEN '$fecha_inicio' AND '$fecha_fin'
+        AND c.gestor = '$usuario'
+        ORDER BY c.nombre, c.apellidos, j.fecha_judicial
+        ";
     $result_judicial = $conn->query($sql_judicial);
 
-    $sql_clientes = "SELECT * FROM clientes ORDER BY nombre, apellidos";
+    $sql_clientes = "SELECT * FROM clientes 
+                 WHERE gestor = '$usuario' 
+                 ORDER BY nombre, apellidos";
     $result_clientes = $conn->query($sql_clientes);
 
     $clientes_con_historial = [];

@@ -2,20 +2,20 @@
 Tabla para el calendario
 ------------------------------------------------------------------------------------------
 
-CREATE TABLE eventos (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    usuario_id VARCHAR(50) NOT NULL,  
-    cliente_id VARCHAR(20) NOT NULL,   
-    tipo ENUM('consulta', 'credito diario', 'credito semanal', 'credito anual', 'reunion') NOT NULL,
-    fecha_inicio DATE NOT NULL,
-    hora_inicio TIME NOT NULL,
-    duracion INT NOT NULL,           
-    notas TEXT,
-    fecha_creacion DATETIME DEFAULT CURRENT_TIMESTAMP
-);
-ALTER TABLE eventos MODIFY COLUMN fecha_actualizacion DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP;
-ALTER TABLE eventos ADD COLUMN fecha_actualizacion DATETIME NULL;
-ALTER TABLE eventos	MODIFY COLUMN tipo VARCHAR(125) NOT NULL;
+CREATE TABLE `eventos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `usuario_id` varchar(50) NOT NULL,
+  `cliente_id` varchar(20) NOT NULL,
+  `tipo` varchar(125) NOT NULL,
+  `fecha_inicio` date NOT NULL,
+  `hora_inicio` time NOT NULL,
+  `duracion` int NOT NULL,
+  `notas` text,
+  `fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP,
+  `fecha_actualizacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 
 ------------------------------------------------------------------------------------------
 Tabla para el registro inicial 
@@ -34,15 +34,13 @@ CREATE TABLE `wp_employees` (
   `token_expiration` datetime DEFAULT NULL,
   `estado` enum('pendiente','aprobado','rechazado') COLLATE utf8mb4_general_ci DEFAULT 'pendiente',
   `fecha_de_registro` datetime DEFAULT NULL,
+  `ultimo_cambio_pass` datetime DEFAULT NULL,
+  `last_login` datetime DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Usuario` (`Usuario`),
   UNIQUE KEY `dni_UNIQUE` (`dni`),
   UNIQUE KEY `Correo_UNIQUE` (`Correo`)
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-ALTER TABLE wp_employees 
-ADD COLUMN ultimo_cambio_pass DATETIME DEFAULT NULL,
-ADD COLUMN last_login DATETIME DEFAULT NULL;
+) ENGINE=InnoDB AUTO_INCREMENT=129 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --------------------------------------------------------------------------------------------
 Tabla para la validación final
@@ -61,11 +59,34 @@ CREATE TABLE `wp_datos_usuarios` (
 Tabla para control de logins
 --------------------------------------------------------------------------------------------
 
-CREATE TABLE logs_accesos (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
-  ip VARCHAR(45) NOT NULL,
-  user_agent TEXT,
-  fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_id) REFERENCES wp_employees(id)
-);
+CREATE TABLE `logs_accesos` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `ip` varchar(45) NOT NULL,
+  `user_agent` text,
+  `fecha` datetime DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `logs_accesos_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `wp_employees` (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `logs_acciones` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `fecha` datetime NOT NULL,
+  `usuario_id` int NOT NULL,
+  `usuario_nombre` varchar(255) DEFAULT NULL,
+  `usuario_cargo` varchar(100) DEFAULT NULL,
+  `ip` varchar(45) NOT NULL,
+  `user_agent` text,
+  `modulo` varchar(100) NOT NULL DEFAULT 'REGISTRO_CLIENTES',
+  `accion` varchar(255) NOT NULL,
+  `detalles` json DEFAULT NULL,
+  `nivel` enum('info','warning','error','critical') DEFAULT 'info',
+  PRIMARY KEY (`id`),
+  KEY `fecha` (`fecha`),
+  KEY `usuario_id` (`usuario_id`),
+  KEY `modulo` (`modulo`),
+  KEY `nivel` (`nivel`),
+  KEY `accion` (`accion`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+

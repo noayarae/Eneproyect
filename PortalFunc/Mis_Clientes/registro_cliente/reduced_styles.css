@@ -1,0 +1,99 @@
+/* Reducir el tamaño de la fuente globalmente */
+body {
+    font-size: 10px; /* Reducir el tamaño de la fuente base */
+    margin: 0;       /* Eliminar márgenes del cuerpo */
+    padding: 0;      /* Eliminar padding del cuerpo */
+}
+
+/* Reducir el tamaño de la fuente en los encabezados */
+h5 {
+    font-size: 10px; /* Reducir el tamaño de la fuente de los encabezados */
+    margin: 0;        /* Eliminar márgenes de los encabezados */
+    padding: 5px 0;  /* Reducir padding vertical */
+}
+
+/* Reducir el tamaño de la fuente en el boton de la tabla lista de clientes*/
+button {
+    font-size: 10px; /* Reducir el tamaño de la fuente de los botones */
+    padding: 2px 10px; /* Reducir el padding de los botones */
+    margin: 1px;      /* Reducir márgenes entre botones */  
+    background-color: #003366; 
+    border-radius: 8px;
+    border: none; /* Sin borde */
+    color: white; /* Texto blanco */
+    cursor: pointer; /* Cambia el cursor al pasar por el botón */
+    transition: background-color 0.3s, transform 0.1s; /* Transiciones suaves */
+    font-weight: bold;             /* Texto en negrita */
+    justify-content: center; /* Centrado horizontal */
+}
+/* Cambia de color al pasar el mouse */
+button:hover {
+    background-color: #007bff; /* Azul más claro */
+    font-weight: bold;             /* Texto en negrita */
+    /* transform: scale(1.05);    /* Aumentar ligeramente el tamaño */ 
+}
+
+/* Efecto al hacer clic (presionar el botón) */
+button:active {
+    transform: scale(0.97); /* Hace que el botón se vea presionado */
+    background-color: #004a99; /* Azul más oscuro */
+}
+
+/* Reducir el tamaño de la fuente en los formularios */
+.form-container label,
+.form-container input,
+.form-container select {
+    font-size: 10px; /* Reducir el tamaño de la fuente en los formularios */
+    margin: 0px 0px;   /* Reducir márgenes verticales */
+}
+
+/* Reducir el tamaño de la fuente en las tablas lista de clientes y informacion del cliente */
+table {
+    font-size: 10px; /* Reducir el tamaño de la fuente en la tabla */
+    margin: 0px;       /* Eliminar márgenes de la tabla */
+}
+
+/* Reducir el tamaño de la fuente en los contenedores de detalles */
+.details-container {
+    font-size: 10px; /* Reducir el tamaño de la fuente en los contenedores de detalles */
+    margin: 0px;       /* Eliminar márgenes del contenedor de detalles */
+    padding: 2px;   /* Reducir padding */
+    padding-bottom: 20px; /* Añade espacio en la parte inferior para los botones */
+    margin: 0px;
+}
+
+/* Reducir el tamaño de la fuente en los títulos de sección */
+.client-search-title,
+.fixed-header h5 {
+    font-size: 12px; /* Reducir el tamaño de la fuente en los títulos de sección */
+    margin: 0;       /* Eliminar márgenes */
+}
+
+/* Reducir el tamaño de la fuente en los contenedores de búsqueda */
+.busqueda-clientes label,
+.busqueda-clientes input {
+    font-size: 10px; /* Reducir el tamaño de la fuente en los contenedores de búsqueda */
+    margin: 2px 0;   /* Reducir márgenes verticales */
+}
+
+/* Reducir márgenes y padding en contenedores específicos */
+.vertical-button-container,
+.vertical-button-cont,
+.form-container,
+.default-box,
+.busqueda-cli {
+    margin: 0px;      /* Eliminar márgenes */
+    padding: 5px;   /* Reducir padding */
+}
+
+/* Ajustar espaciado entre celdas de la tabla */
+table td, table th {
+    padding: 1px;   /* Reducir padding en celdas de tabla */
+}
+
+.no-results {
+    min-height: 20vh; /* 50% of the viewport height, adjust as needed */
+    font-size: 16px; /* Optional: Larger font for visibility */
+    color: #000; /* Optional: Red color for emphasis */
+    font-weight: bold; /* en negrita */
+}

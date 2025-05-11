@@ -2,8 +2,8 @@
 // Configuración de la conexión a la base de datos
 $servidor = "localhost";
 $usuario = "root";
-$contrasena = ""; 
-$baseDatos = "";
+$contrasena = "SEB23NOV2003_"; 
+$baseDatos = "eneproyect_bd";
 
 // Crear la conexión
 $conn = new mysqli($servidor, $usuario, $contrasena, $baseDatos);

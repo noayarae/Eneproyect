@@ -6,17 +6,18 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <link href="reduced_styles.css" rel="stylesheet"> <!-- Nuevo archivo CSS -->
     <script src="validacion.js" defer></script>
 </head>
 
-<body class="container-fluid mt-3">
-    <div class="row">
+<body class="container-fluid mt-2">
+    <div class="row gx-2">
         <!-- Barra lateral vertical -->
         <div class="col-md-4">
             <div class="vertical-button-cont">
                 <div class="vertical-button-container">
-                    <button type="button" class="btn btn-primary mb-3" onclick="cargarRegistro()">
-                        Registrar nuevo cliente
+                    <button type="button" class="btn btn-primary boton-registro" onclick="cargarRegistro()">
+                        REGISTRAR NUEVO CLIENTE
                     </button>
                     <div id="registroCliente" class="form-container">
                         <div id="registroContent">
@@ -34,65 +35,62 @@
         <!-- Contenido principal horizontal -->
         <div class="col-md-8">
             <!-- Lista de Clientes -->
-            <div class="mb-4 p-3 border">
-                <div class="fixed-header">
-                    <h3>Lista de Clientes</h3>
-                </div>
-                <div class="scrollable-table-container">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th onclick="sortTable(0)">Nombre &#128317;</th>
-                                <th onclick="sortTable(1)">Apellidos &#128317;</th>
-                                <th onclick="sortTable(2)">DNI &#128317;</th>
-                                <th onclick="sortTable(3)">Teléfono &#128317;</th>
-                                <th onclick="sortTable(4)">Monto &#128317;</th>
-                                <th onclick="sortTable(5)">Saldo &#128317;</th>
-                                <th onclick="sortTable(6)">Fecha Clave &#128317;</th>
-                                <th onclick="sortTable(7)">Acción en Fecha Clave &#128317;</th>
-                                <th class="fixed-column">Información</th>
-                            </tr>
-                        </thead>
-                        <tbody id="listaClientes">
-                            <!-- La lista de clientes se cargará aquí al inicio -->
-                        </tbody>
-                    </table>
-                </div>
+            <div class="fixed-header">
+                <h5>LISTA DE CLIENTES</h5>
+            </div>
+            <div class="scrollable-table-container">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">Nombre &#128317;</th>
+                            <th onclick="sortTable(1)">Apellidos &#128317;</th>
+                            <th onclick="sortTable(2)">DNI &#128317;</th>
+                            <th onclick="sortTable(3)">Teléfono &#128317;</th>
+                            <th onclick="sortTable(4)">Monto &#128317;</th>
+                            <th onclick="sortTable(5)">Saldo &#128317;</th>
+                            <th onclick="sortTable(6)">Fecha Clave &#128317;</th>
+                            <th onclick="sortTable(7)">Acción en Fecha Clave &#128317;</th>
+                            <th class="fixed-column">Información</th>
+                        </tr>
+                    </thead>
+                    <tbody id="listaClientes">
+                        <!-- La lista de clientes se cargará aquí al inicio -->
+                    </tbody>
+                </table>
             </div>
 
             <!-- Búsqueda de Clientes -->
-            <div class="mb-4 p-3 border busqueda-cli">
-                <div class="mb-4 p-3 border busqueda-clientes">
-                    <h2>Búsqueda de Clientes</h2>
-                    <form id="busquedaForm" method="post" onsubmit="return buscarCliente(event);">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="mb-2">
-                                    <label class="fw-bold">DNI:</label>
-                                    <input type="number" id="dniInput" name="dni" class="form-control" oninput="buscarClientePorDNI()">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-2">
-                                    <label class="fw-bold">Nombre:</label>
-                                    <input type="text" name="nombre" class="form-control">
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="mb-2">
-                                    <label class="fw-bold">Apellidos:</label>
-                                    <input type="text" name="apellidos" class="form-control">
-                                </div>
+            <div class="mb-2 border busqueda-clientes">
+                <h5 class="client-search-title">BUSQUEDA DE CLIENTES</h5>
+                <form id="busquedaForm" method="post" onsubmit="return buscarCliente(event);">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="mb-2">
+                                <label class="fw-bold">DNI:</label>
+                                <input type="number" id="dniInput" name="dni" class="form-control" oninput="buscarClientePorDNI()">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary mt-3">Buscar</button>
-                    </form>
-                </div>
+                        <div class="col-md-4">
+                            <div class="mb-2">
+                                <label class="fw-bold">Nombre:</label>
+                                <input type="text" name="nombre" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="mb-2">
+                                <label class="fw-bold">Apellidos:</label>
+                                <input type="text" name="apellidos" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                </form>
             </div>
+
             <!-- Cuadro blanco para la información del cliente -->
-            <div id="clienteDetalles" class="p-3 border mt-4">
+            <div id="clienteDetalles" class="border">
                 <div class="fixed-header">
-                    <h4>Información del Cliente</h4>
+                    <h5>INFORMACION DEL CLIENTE</h5>
                 </div>
                 <div class="details-container" id="detallesContent">
                     <!-- Mensaje por defecto -->
@@ -103,8 +101,7 @@
                     <button type="button" class="btn btn-primary" onclick="verHistorial()">Ver Historia</button>
                     <button type="button" class="btn btn-secondary" onclick="agregarHistoria()">Agregar Historia</button>
                     <button type="button" class="btn btn-success" onclick="window.location.href='index.php'">Regresar</button>
-
-                    <button type="button" class="btn btn-danger">Salir</button>
+                    <button type="button" class="btn btn-danger" onclick="location.reload()">Salir</button>
                 </div>
             </div>
         </div>

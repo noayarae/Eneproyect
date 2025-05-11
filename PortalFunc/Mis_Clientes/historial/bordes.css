@@ -1,0 +1,58 @@
+body {
+    background: #0056b3 ;
+}
+h5{
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+}
+* {
+    font-size: 10px !important;
+}
+
+.titulo-cliente,
+.titulo-historial {
+    background-color: #000; /* Blue background (you can change this to any color, e.g., #ff0000 for red) */
+    color: #ffffff; /* White text color (you can change this to any color, e.g., #000000 for black) */
+    border: 1px solid #000; /* Maintain the existing border */
+    padding: 1px; /* Maintain the existing padding */
+}
+.table-fixed tbody tr td:first-child,
+.table-fixed-judicial tbody tr td:first-child {
+    font-weight: bold;
+}
+.client-info{
+    background: #fff;
+
+}
+
+.historial{
+    background: #003366;
+}
+
+.fixed-buttons {
+    display: flex;
+    justify-content: space-between; /* Distribuye los botones uniformemente */   
+    gap: 20px; /* Espacio entre los botones */
+    margin-top: 0px; /* Espacio superior */
+}
+
+.fixed-buttons button {
+    flex: 1; /* Cada botón ocupa el mismo espacio */
+    padding: 3px; /* Padding uniforme */
+    font-size: 10px !important; /* Tamaño de fuente consistente */
+    text-align: center; /* Centra el texto */
+    padding: 3px; /* definir la altura */
+    font-weight: bold; /* en negrita */
+    background-color: #000000; /* Color de fondo azul por defecto */
+    color: #FFD700; /* Color del texto blanco */
+    border: none; /* Elimina el borde por defecto */
+    transition: background-color 0.3s ease; /* Suaviza la transición del color */
+}
+
+.fixed-buttons button:hover {
+    background-color: #FFD700 ; /* Color amarillo al pasar el mouse */
+    color: #000000; /* Mantiene el color del texto blanco */
+    font-weight: bold; /* en negrita */
+}

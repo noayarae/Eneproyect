@@ -107,3 +107,13 @@
 [08-May-2025 02:08:50 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\FuncionLogin\password_recovery.php on line 88
 [08-May-2025 02:09:47 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\FuncionLogin\password_recovery.php on line 88
 [08-May-2025 02:47:53 Europe/Berlin] PHP Deprecated:  Constant FILTER_SANITIZE_STRING is deprecated in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\FuncionLogin\password_recovery.php on line 88
+[11-May-2025 02:29:50 Europe/Berlin] [2025-05-11 02:29:50] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 02:29:51 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 02:29:51 Europe/Berlin] Datos usuario: {"id":116,"nombre":"Sebastian","apellido":"Noa","correo":"notwasd918273@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572533","password":"$2y$10$cXmPIujkm..ocjjewg2h1unjQemYjJeOD.N4KMTp1jr2J9YV7\/X1u","reset_token":"d1ff52724a72dea3e20c8bff7f07d5e75622ddb7d431d49f77ae1960303b7a31c05db284df730923de748033c5489e7bf455","ultimo_cambio_pass":"2025-05-07 19:10:02","estado":"aprobado"}
+[11-May-2025 02:29:51 Europe/Berlin] Registrando acceso: {"user_id":116,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 02:29:51"}
+[11-May-2025 02:29:51 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&
+[11-May-2025 04:57:18 Europe/Berlin] [2025-05-11 04:57:18] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 04:57:18 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 04:57:18 Europe/Berlin] Datos usuario: {"id":116,"nombre":"Sebastian","apellido":"Noa","correo":"notwasd918273@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572533","password":"$2y$10$cXmPIujkm..ocjjewg2h1unjQemYjJeOD.N4KMTp1jr2J9YV7\/X1u","reset_token":null,"ultimo_cambio_pass":"2025-05-07 19:10:02","estado":"aprobado"}
+[11-May-2025 04:57:18 Europe/Berlin] Registrando acceso: {"user_id":116,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 04:57:18"}
+[11-May-2025 04:57:18 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&

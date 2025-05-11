@@ -1,10 +1,18 @@
 <?php
 require(__DIR__ . "/FuncionLogin/Auth/auth.php");
 
-$usuario = $_SESSION['usuario'];
-$correo = $_SESSION['correo'];
-$cargo = $_SESSION['cargo'];
-$telefono = $_SESSION['telefono'];
+if (
+    !isset($_SESSION['usuario']) ||
+    !isset($_SESSION['correo']) ||
+    !isset($_SESSION['cargo']) ||
+    !isset($_SESSION['telefono']) ||
+    !isset($_SESSION['nombre_completo'])
+) {
+    header("Location: https://eneproyect.com");
+    exit();
+}
+//llamar a las variables de sesion
+$nombre_completo = $_SESSION['nombre_completo'];
 
 ?>
 
@@ -45,7 +53,7 @@ $telefono = $_SESSION['telefono'];
     <main class="content">
         <header>
             <h1>Bienvenido al Portal</h1>
-            <h2>Bienvenido, <?php echo htmlspecialchars($usuario); ?></h2>
+            <h2>Bienvenido, <?php echo htmlspecialchars(string: $nombre_completo); ?></h2>
             <p>Gestiona clientes, citas y más desde aquí.</p>
         </header>
 

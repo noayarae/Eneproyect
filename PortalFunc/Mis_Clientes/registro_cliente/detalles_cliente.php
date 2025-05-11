@@ -23,8 +23,8 @@ if ($result->num_rows > 0) {
 
     // Información del Titular
     echo '<div class="col-md-6">';
-    echo "<div class='sticky-top bg-light p-2 mb-3'>"; // Fijar el título en la parte superior
-    echo "<h4 class='titular-title'>Titular</h4>"; // Añade la clase titular-title
+    echo "<div class='sticky-top bg-light'>"; // Fijar el título en la parte superior
+    echo "<h5 class='titular-title'>Titular</h5>"; // Añade la clase titular-title
     echo "</div>";
     echo "<table class='table table-bordered'>";
     echo "<tr><td><strong>Nombre:</strong></td><td>" . htmlspecialchars($row['nombre'] . " " . $row['apellidos']) . "</td></tr>";
@@ -55,8 +55,8 @@ if ($result->num_rows > 0) {
 
     // Información del Aval
     echo '<div class="col-md-6">';
-    echo "<div class='sticky-top bg-light p-2 mb-3'>"; // Fijar el título en la parte superior
-    echo "<h4 class='aval-title'>Aval</h4>"; // Añade la clase aval-title
+    echo "<div class='sticky-top bg-light'>"; // Fijar el título en la parte superior
+    echo "<h5 class='aval-title'>Aval</h5>"; // Añade la clase aval-title
     echo "</div>";
     echo "<table class='table table-bordered'>";
     if (!empty($row['nombre_garante']) || !empty($row['apellidos_garante'])) {
@@ -94,7 +94,9 @@ if ($result->num_rows > 0) {
 
     echo '</div>';
 } else {
-    echo "No se encontraron detalles para este cliente.";
+    echo '<div class="no-results text-center d-flex justify-content-center align-items-center">';
+    echo 'No se encontraron detalles para este cliente.';
+    echo '</div>';
 }
 
 $conn->close();

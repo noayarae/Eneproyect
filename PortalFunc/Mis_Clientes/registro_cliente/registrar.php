@@ -2,7 +2,7 @@
 require '../../../InterfazLogin/conexion.php';
 require(__DIR__ . "/..//../../InterfazLogin/FuncionLogin/Auth/auth.php");
 
-//agragar la session
+//agregar la session
 $usuario = $_SESSION['usuario'];
 $correo = $_SESSION['correo'];
 $cargo = $_SESSION['cargo'];
@@ -45,14 +45,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fecha_clave = $_POST["fecha_clave"];
     $accion_fecha_clave = $_POST["accion_fecha_clave"];
     // dato personal asignado
-    $gestor = $_POST["gestor"];
-    $supervisor = $_POST["supervisor"];
-    $administrador = $_POST["administrador"];
+    if($cargo == 'Gestor de Créditos') {
+        $gestor = $usuario;
+        $supervisor = $_POST["supervisor"];
+        $administrador = $_POST["administrador"];
+    } elseif($cargo == 'Supervisor') {
+        $gestor = $_POST["gestor"];
+        $supervisor = $usuario;
+        $administrador = $_POST["administrador"];
+    } elseif($cargo == 'Administrador') {
+        $gestor = $_POST["gestor"];
+        $supervisor = $_POST["supervisor"];
+        $administrador = $usuario;
+    } else {
+        // Si no tiene un cargo específico, tomar todos los valores del formulario
+        $gestor = $_POST["gestor"];
+        $supervisor = $_POST["supervisor"];
+        $administrador = $_POST["administrador"];
+    }
 
     $sql = "INSERT INTO clientes (nombre, apellidos, dni, telefono, fecha_nacimiento, domicilio1, referencia1, domicilio2, referencia2, ocupacion, clasificacion_riesgo, agencia, tipo_credito, estado, fecha_desembolso, fecha_vencimiento, monto, saldo, nombre_garante, apellidos_garante, dni_garante, telefono_garante, fecha_nacimiento_garante, domicilio1_garante, referencia1_garante, domicilio2_garante, referencia2_garante, ocupacion_garante, clasificacion_riesgo_garante, fecha_clave, accion_fecha_clave, gestor, supervisor, administrador)
     VALUES ('$nombre', '$apellidos', '$dni', '$telefono', '$fecha_nacimiento', '$domicilio1', '$referencia1', '$domicilio2', '$referencia2', '$ocupacion', '$clasificacion_riesgo', '$agencia', '$tipo_credito', '$estado', '$fecha_desembolso', '$fecha_vencimiento', '$monto', '$saldo', '$nombre_garante', '$apellidos_garante', '$dni_garante', '$telefono_garante', '$fecha_nacimiento_garante', '$domicilio1_garante', '$referencia1_garante', '$domicilio2_garante', '$referencia2_garante', '$ocupacion_garante', '$clasificacion_riesgo_garante', '$fecha_clave', '$accion_fecha_clave', '$gestor', '$supervisor', '$administrador')";
 
-    if ($conn->query($sql) === TRUE) {
+        if ($conn->query($sql) === TRUE) {
         // Definir las notas del evento
         $notas_evento = "Acción requerida: " . $accion_fecha_clave .
             "\nCliente: " . $nombre . " " . $apellidos .
@@ -109,7 +124,7 @@ $conn->close();
 <head>
     <style>
         .form-container {
-            height: 1000px;
+            height: 517px;
             /* Altura fija para el contenedor del formulario */
             overflow-y: auto;
             /* Habilitar desplazamiento vertical */
@@ -118,35 +133,61 @@ $conn->close();
         }
 
         .fixed-buttonss {
+            position: absolute;
+            /* Cambiar a absolute */
             position: sticky;
             bottom: 0;
             background-color: white;
-            padding: 10px;
-            border-top: 1px solid #ddd;
+            padding: 5px;
             justify-content: center;
+            width: 100%;
             /* Centra los botones horizontalmente */
-            gap: 100px;
+            gap: 10px;
+            /* Espacio entre los botones */
+            padding: 0;
+            justify-content: space-around;
+            /* Centra los botones horizontalmente */
+            margin-top: 0px;
+            /* Añade espacio entre los botones y el contenido */
+            display: flex;
+            justify-content: space-between;
+            /* Distribuye los botones uniformemente */
+            gap: 10px;
             /* Espacio entre los botones */
         }
 
         .fixed-buttonss button {
-            width: 200px;
-            /* Ajusta el ancho de los botones */
-            font-size: 16px;
+            padding: 3px;
+            font-size: 10px;
             /* Ajusta el tamaño de la fuente si es necesario */
+            border: none;
+            cursor: pointer;
+            background-color: #003366;
+            transition: background-color 0.3s;
+            /* Transición suave */
+            font-weight: bold;
+            /* Texto en negrita */
+            flex: 1;
+            /* Cada botón ocupa el mismo espacio */
+        }
+
+        .fixed-buttonss button:hover {
+            font-weight: bold;
+            /* Texto en negrita */
+            background-color: #FFD700;
+            /* Color azul al pasar el mouse */
+            color: #000000;
+            /* Cambia el color del texto si lo deseas */
         }
     </style>
 </head>
 
 <body class="container mt-3">
-    <div>
-        <h2>Formulario de Registro</h2>
-    </div>
     <div class="form-container">
         <form name="registroForm" method="post" action="registrar.php" onsubmit="return validarFormulario()">
             <div class="row">
-                <div class="col-md-12 border p-3">
-                    <h4>Información del Cliente</h4>
+                <div class="col-md-12 border">
+                    <h5 class="fw-bold text-center">INFORMACION DEL CLIENTE</h5>
                     <div class="mb-2">
                         <label class="fw-bold">Nombre:</label>
                         <input type="text" name="nombre" required class="form-control">
@@ -155,13 +196,15 @@ $conn->close();
                         <label class="fw-bold">Apellidos:</label>
                         <input type="text" name="apellidos" required class="form-control">
                     </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">DNI:</label>
-                        <input type="text" name="dni" required class="form-control" onblur="verificarDNI(this.value)">
-                    </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Teléfono:</label>
-                        <input type="text" name="telefono" required class="form-control">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="fw-bold">DNI:</label>
+                            <input type="text" name="dni" required class="form-control" onblur="verificarDNI(this.value)">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="fw-bold">Teléfono:</label>
+                            <input type="text" name="telefono" required class="form-control">
+                        </div>
                     </div>
                     <div class="mb-2">
                         <label class="fw-bold">Fecha de Nacimiento:</label>
@@ -197,48 +240,54 @@ $conn->close();
                             <option value="PER">PER</option>
                         </select>
                     </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Agencia:</label>
-                        <select name="agencia" required class="form-control">
-                            <option value="" disabled selected>Seleccione una opción</option>
-                            <option value="Ayacucho">Ayacucho</option>
-                            <option value="Huancayo">Huancayo</option>
-                            <option value="Lima">Lima</option>
-                        </select>
-                    </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Tipo de credito:</label>
-                        <select name="tipo_credito" required class="form-control">
-                            <option value="" disabled selected>Seleccione una opción</option>
-                            <option value="Diario">Diario</option>
-                            <option value="Semanal">Semanal</option>
-                            <option value="Mensual">Mensual</option>
-                            <option value="Anual">Anual</option>
-                        </select>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="fw-bold">Agencia:</label>
+                            <select name="agencia" required class="form-control">
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="Ayacucho">Ayacucho</option>
+                                <option value="Huancayo">Huancayo</option>
+                                <option value="Lima">Lima</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="fw-bold">Tipo de credito:</label>
+                            <select name="tipo_credito" required class="form-control">
+                                <option value="" disabled selected>Seleccione una opción</option>
+                                <option value="Diario">Diario</option>
+                                <option value="Semanal">Semanal</option>
+                                <option value="Mensual">Mensual</option>
+                                <option value="Anual">Anual</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="mb-2">
                         <label class="fw-bold">Estado:</label>
                         <input type="text" name="estado" required class="form-control">
                     </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Fecha de Desembolso:</label>
-                        <input type="date" name="fecha_desembolso" required class="form-control">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="fw-bold">Fecha de Desembolso:</label>
+                            <input type="date" name="fecha_desembolso" required class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="fw-bold">Fecha de Vencimiento:</label>
+                            <input type="date" name="fecha_vencimiento" required class="form-control">
+                        </div>
                     </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Fecha de Vencimiento:</label>
-                        <input type="date" name="fecha_vencimiento" required class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Monto:</label>
-                        <input type="number" step="0.01" name="monto" required class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Saldo:</label>
-                        <input type="number" step="0.01" name="saldo" required class="form-control">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="fw-bold">Monto de crédito:</label>
+                            <input type="number" step="0.01" name="monto" required class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="fw-bold">Saldo de crédito :</label>
+                            <input type="number" step="0.01" name="saldo" required class="form-control">
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-12 border p-3">
-                    <h4>Información del Garante</h4>
+                <div class="col-md-12 border">
+                    <h5 class="fw-bold text-center">INFORMACION DEL GARANTE</h5>
                     <div class="mb-2">
                         <label class="fw-bold">Nombre:</label>
                         <input type="text" name="nombre_garante" class="form-control">
@@ -247,13 +296,15 @@ $conn->close();
                         <label class="fw-bold">Apellidos:</label>
                         <input type="text" name="apellidos_garante" class="form-control">
                     </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">DNI:</label>
-                        <input type="text" name="dni_garante" class="form-control">
-                    </div>
-                    <div class="mb-2">
-                        <label class="fw-bold">Teléfono:</label>
-                        <input type="number" name="telefono_garante" class="form-control">
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <label class="fw-bold">DNI:</label>
+                            <input type="text" name="dni_garante" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label class="fw-bold">Teléfono:</label>
+                            <input type="number" name="telefono_garante" class="form-control">
+                        </div>
                     </div>
                     <div class="mb-2">
                         <label class="fw-bold">Fecha de Nacimiento:</label>
@@ -290,8 +341,8 @@ $conn->close();
                         </select>
                     </div>
                 </div>
-                <div class="col-md-12 border p-3">
-                    <h4>Fecha Programada</h4>
+                <div class="col-md-12 border">
+                    <h5 class="fw-bold text-center">FECHA PROGRAMADA</h5>
                     <div class="mb-2">
                         <label class="fw-bold">Fecha clave:</label>
                         <input type="date" name="fecha_clave" required class="form-control">
@@ -301,8 +352,8 @@ $conn->close();
                         <input type="text" name="accion_fecha_clave" required class="form-control">
                     </div>
                 </div>
-                <div class="col-md-12 border p-3">
-                <h4>Personal Asignado</h4>
+                <div class="col-md-12 border">
+                    <h5 class="fw-bold text-center">PERSONAL ASIGNADO</h5>
                     <div class="mb-2">
                         <label class="fw-bold">Gestor:</label>
                         <input type="text" name="gestor" required class="form-control"
@@ -328,7 +379,6 @@ $conn->close();
             <div class="fixed-buttonss">
                 <button type="submit" class="btn btn-primary mt-3">Registrar</button>
                 <button type="reset" class="btn btn-secondary mt-3">Limpiar</button>
-                <br>
                 <button type="button" class="btn btn-danger mt-3" onclick="cerrarRegistro()">Salir</button>
             </div>
         </form>

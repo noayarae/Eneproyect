@@ -47,39 +47,49 @@ $conn->close();
     <title>Historial del Cliente</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="styles.css" rel="stylesheet">
+    <link href="bordes.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
     <div class="container-fluid flex-grow-1">
         <div class="titulo-cliente border p-1">
-            <h2>Información del Cliente</h2>
+            <h5>INFORMACION DEL CLIENTE</h5>
         </div>
         <div class="client-info border p-3 mb-3">
             <div class="row">
                 <!-- Primera columna -->
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <p><strong>Nombre:</strong> <?php echo htmlspecialchars($cliente['nombre'] . ' ' . $cliente['apellidos']); ?></p>
                     <p><strong>DNI:</strong> <?php echo htmlspecialchars($cliente['dni']); ?></p>
-                    <p><strong>Agencia:</strong> <?php echo htmlspecialchars($cliente['agencia']); ?></p>
-                    <p><strong>Tipo de Crédito:</strong> <?php echo htmlspecialchars($cliente['tipo_credito']); ?></p>
-                    <p><strong>Monto:</strong> <?php echo htmlspecialchars($cliente['monto']); ?></p>
                 </div>
                 <!-- Segunda columna -->
-                <div class="col-md-6">
-                    <p><strong>Saldo:</strong> <?php echo htmlspecialchars($cliente['saldo']); ?></p>
-                    <p><strong>Monto Abonado:</strong> <?php echo htmlspecialchars($monto_abonado); ?></p>
-                    <p><strong>Fecha de Desembolso:</strong> <?php echo htmlspecialchars($cliente['fecha_desembolso']); ?></p>
-                    <p><strong>Fecha de Vencimiento:</strong> <?php echo htmlspecialchars($cliente['fecha_vencimiento']); ?></p>
+                <div class="col-md-2">
+                    <p><strong>Agencia:</strong> <?php echo htmlspecialchars($cliente['agencia']); ?></p>
+                    <p><strong>Tipo de Crédito:</strong> <?php echo htmlspecialchars($cliente['tipo_credito']); ?></p>
+                </div>
+                <!-- tercera columna -->
+                <div class="col-md-3">
+                    <p><strong>Fecha de Desembolso:</strong> <?php echo DateTime::createFromFormat('Y-m-d', $cliente['fecha_desembolso'])->format('d-m-Y'); ?></p>
+                    <p><strong>Fecha de Vencimiento:</strong> <?php echo DateTime::createFromFormat('Y-m-d', $cliente['fecha_vencimiento'])->format('d-m-Y'); ?></p>
+                </div>
+                <!-- cuarta columna -->
+                <div class="col-md-2">
+                    <p><strong>Monto:</strong> <?php echo htmlspecialchars($cliente['monto']); ?></p>
                     <p><strong>Plazo de Crédito (días):</strong> <?php echo htmlspecialchars($plazo_credito); ?></p>
+                </div>
+                <!-- quinta columna -->
+                <div class="col-md-2">
+                    <p><strong>Monto Abonado:</strong> <?php echo htmlspecialchars($monto_abonado); ?></p>
+                    <p><strong>Saldo:</strong> <?php echo htmlspecialchars($cliente['saldo']); ?></p>
                 </div>
             </div>
         </div>
         <div class="titulo-historial border p-1">
-            <h2>Historial del Cliente</h2>
+            <h5>HISTORIAL DEL CLIENTE</h5>
         </div>
         <div class="historial border p-3">
             <div class="table-responsive">
-                <h4>Historial Pre-Judicial</h4>
+                <h5>HISTORIAL PRE-JUDICIAL</h5>
             </div>
             <div class="scrollable-table-container">
                 <table class="table table-bordered table-striped table-fixed">
@@ -91,11 +101,11 @@ $conn->close();
                             <th>N° de Notif. Voucher</th>
                             <th>Descripción</th>
                             <th>Notificación</th>
+                            <th>Evidencia 1</th>
+                            <th>Evidencia 2</th>
                             <th>Fecha Clave</th>
                             <th>Acción en Fecha Clave</th>
                             <th>Actor</th>
-                            <th>Evidencia 1</th>
-                            <th>Evidencia 2</th>
                             <th>Días desde Fecha Clave</th>
                             <th>Objetivo Logrado</th>
                             <th>Días de Mora</th>
@@ -112,16 +122,16 @@ $conn->close();
                         while ($row = $result_prejudicial->fetch_assoc()) {
                             echo "<tr>
                                 <td>{$count}</td>
-                                <td>{$row['fecha_acto']}</td>
+                                <td>" . (!empty($row['fecha_acto']) ? DateTime::createFromFormat('Y-m-d', $row['fecha_acto'])->format('d-m-Y') : '') . "</td>
                                 <td>{$row['acto']}</td>
                                 <td>{$row['n_de_notif_voucher']}</td>
                                 <td>{$row['descripcion']}</td>
                                 <td>" . (isset($row['notif_compromiso_pago_evidencia']) && !empty($row['notif_compromiso_pago_evidencia']) && $row['notif_compromiso_pago_evidencia'] !== 'uploads/' ? "<a href='#' class='file-link' data-url='../pre_judicial/{$row['notif_compromiso_pago_evidencia']}'>{$row['notif_compromiso_pago_evidencia']}</a> <a href='../pre_judicial/{$row['notif_compromiso_pago_evidencia']}' download style='margin-left:10px; color:blue; font-weight:bold;'>📥Descargar</a>" : '') . "</td>
-                                <td>{$row['fecha_clave']}</td>
-                                <td>{$row['accion_fecha_clave']}</td>
-                                <td>{$row['actor']}</td>
                                 <td>" . (isset($row['evidencia1_localizacion']) && !empty($row['evidencia1_localizacion']) && $row['evidencia1_localizacion'] !== 'uploads/' ? "<a href='#' class='file-link' data-url='../pre_judicial/{$row['evidencia1_localizacion']}'>{$row['evidencia1_localizacion']}</a> <a href='../pre_judicial/{$row['evidencia1_localizacion']}' download style='margin-left:10px; color:blue; font-weight:bold;' >📥Descargar</a>" : '') . "</td>
                                 <td>" . (isset($row['evidencia2_foto_fecha']) && !empty($row['evidencia2_foto_fecha']) && $row['evidencia2_foto_fecha'] !== 'uploads/' ? "<a href='#' class='file-link' data-url='../pre_judicial/{$row['evidencia2_foto_fecha']}'>{$row['evidencia2_foto_fecha']}</a> <a href='../pre_judicial/{$row['evidencia2_foto_fecha']}' download style='margin-left:10px; color:blue; font-weight:bold;'>📥Descargar</a>" : '') . "</td>
+                                <td>" . (!empty($row['fecha_clave']) ? DateTime::createFromFormat('Y-m-d', $row['fecha_clave'])->format('d-m-Y') : '') . "</td>
+                                <td>{$row['accion_fecha_clave']}</td>
+                                <td>{$row['actor']}</td>
                                 <td>{$row['dias_desde_fecha_clave']}</td>
                                 <td>{$row['objetivo_logrado']}</td>
                                 <td>{$row['dias_de_mora']}</td>
@@ -139,7 +149,7 @@ $conn->close();
             </div>
 
             <div class="table-responsive">
-                <h4>Historial Judicial</h4>
+                <h5>HISTORIAL JUDICIAL</h5>
             </div>
             <div class="scrollable-table-container">
                 <table class="table table-bordered table-striped table-fixed-judicial">
@@ -150,8 +160,8 @@ $conn->close();
                             <th>Fecha</th>
                             <th>Acto</th>
                             <th>Juzgado</th>
-                            <th>Num. Expediente</th>
-                            <th>Num. Cédula</th>
+                            <th>N° Expediente</th>
+                            <th>N° Cédula</th>
                             <th>Descripción</th>
                             <th>Doc. Evidencia</th>
                             <th>Fecha Clave</th>
@@ -165,14 +175,14 @@ $conn->close();
                             echo "<tr>
                                 <td>{$count}</td>
                                 <td>{$row['etapa']}</td>
-                                <td>{$row['fecha_judicial']}</td>
+                                <td>" . (!empty($row['fecha_judicial']) ? DateTime::createFromFormat('Y-m-d', $row['fecha_judicial'])->format('d-m-Y') : '') . "</td>
                                 <td>{$row['acto_judicial']}</td>
                                 <td>{$row['juzgado']}</td>
                                 <td>{$row['n_exp_juzgado']}</td>
                                 <td>{$row['n_cedula']}</td>
                                 <td>{$row['descripcion_judicial']}</td>
                                 <td>" . (isset($row['doc_evidencia']) && !empty($row['doc_evidencia']) && $row['doc_evidencia'] !== 'uploads/' ? "<a href='#' class='file-link' data-url='../judicial/{$row['doc_evidencia']}'>{$row['doc_evidencia']}</a> <a href='../judicial/{$row['doc_evidencia']}' download style='margin-left:10px; color:blue; font-weight:bold;'>📥Descargar</a>" : '') . "</td>
-                                <td>{$row['fecha_clave_judicial']}</td>
+                                <td>" . (!empty($row['fecha_clave_judicial']) ? DateTime::createFromFormat('Y-m-d', $row['fecha_clave_judicial'])->format('d-m-Y') : '') . "</td>
                                 <td>{$row['accion_en_fecha_clave']}</td>
                                 <td>{$row['actor_judicial']}</td>
                               </tr>";
@@ -201,7 +211,7 @@ $conn->close();
         function agregarHistoria() {
             var idCliente = <?php echo json_encode($id_cliente); ?>;
             if (idCliente) {
-                window.location.href = '/proyecto_financiera/pre_judicial/registro_prejudicial.php?id_cliente=' + encodeURIComponent(idCliente);
+                window.location.href = '../pre_judicial/registro_prejudicial.php?id_cliente=' + encodeURIComponent(idCliente);
             } else {
                 alert("Error: ID del cliente no disponible.");
             }
