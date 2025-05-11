@@ -117,3 +117,61 @@
 [11-May-2025 04:57:18 Europe/Berlin] Datos usuario: {"id":116,"nombre":"Sebastian","apellido":"Noa","correo":"notwasd918273@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572533","password":"$2y$10$cXmPIujkm..ocjjewg2h1unjQemYjJeOD.N4KMTp1jr2J9YV7\/X1u","reset_token":null,"ultimo_cambio_pass":"2025-05-07 19:10:02","estado":"aprobado"}
 [11-May-2025 04:57:18 Europe/Berlin] Registrando acceso: {"user_id":116,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 04:57:18"}
 [11-May-2025 04:57:18 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&
+[11-May-2025 05:50:42 Europe/Berlin] [2025-05-11 05:50:42] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 05:50:42 Europe/Berlin] Preparando consulta para usuario: SLopez2424$$
+[11-May-2025 05:50:42 Europe/Berlin] Datos usuario: {"id":131,"nombre":"Liam","apellido":"Lopez Castro","correo":"hola@yahoo.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"SLopez2424$$","dni":"75572539","password":"$2y$10$yPFX5IkZLOXo73U8dVrMNedUhCqKor\/YdG9qitlTTt\/KFq.rEH3l.","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[11-May-2025 05:50:43 Europe/Berlin] Registrando acceso: {"user_id":131,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 05:50:43"}
+[11-May-2025 05:50:43 Europe/Berlin] Autenticación exitosa para: SLopez2424$$
+[11-May-2025 05:51:13 Europe/Berlin] [2025-05-11 05:51:13] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 05:51:13 Europe/Berlin] Preparando consulta para usuario: SLopez2424$$
+[11-May-2025 05:51:13 Europe/Berlin] Datos usuario: {"id":131,"nombre":"Liam","apellido":"Lopez Castro","correo":"hola@yahoo.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"SLopez2424$$","dni":"75572539","password":"$2y$10$yPFX5IkZLOXo73U8dVrMNedUhCqKor\/YdG9qitlTTt\/KFq.rEH3l.","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[11-May-2025 05:51:14 Europe/Berlin] Registrando acceso: {"user_id":131,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 05:51:14"}
+[11-May-2025 05:51:14 Europe/Berlin] Autenticación exitosa para: SLopez2424$$
+[11-May-2025 05:52:13 Europe/Berlin] [2025-05-11 05:52:13] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 05:52:13 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 05:52:13 Europe/Berlin] Datos usuario: {"id":116,"nombre":"Sebastian","apellido":"Noa","correo":"notwasd918273@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572533","password":"$2y$10$cXmPIujkm..ocjjewg2h1unjQemYjJeOD.N4KMTp1jr2J9YV7\/X1u","reset_token":null,"ultimo_cambio_pass":"2025-05-07 19:10:02","estado":"aprobado"}
+[11-May-2025 05:52:13 Europe/Berlin] Registrando acceso: {"user_id":116,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 05:52:13"}
+[11-May-2025 05:52:13 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&
+[11-May-2025 07:10:46 Europe/Berlin] [2025-05-11 07:10:46] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:10:46 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: YES) in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php:9
+Stack trace:
+#0 C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php(9): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'eneproyect_bd')
+#1 C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\FuncionLogin\login.php(14): require('C:\\Users\\USUARI...')
+#2 {main}
+  thrown in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php on line 9
+[11-May-2025 07:11:04 Europe/Berlin] [2025-05-11 07:11:04] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:11:04 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown database 'eneproyect_bd' in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php:9
+Stack trace:
+#0 C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php(9): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'eneproyect_bd')
+#1 C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\FuncionLogin\login.php(14): require('C:\\Users\\USUARI...')
+#2 {main}
+  thrown in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php on line 9
+[11-May-2025 07:17:28 Europe/Berlin] [2025-05-11 07:17:28] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:17:32 Europe/Berlin] PHP Fatal error:  Uncaught mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php:9
+Stack trace:
+#0 C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php(9): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'eneproyect_bd')
+#1 C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\FuncionLogin\login.php(14): require('C:\\Users\\USUARI...')
+#2 {main}
+  thrown in C:\Users\USUARIO\Desktop\PROYECTOS TRABAJOS\GITHUB_eneproyect\Eneproyect\InterfazLogin\conexion.php on line 9
+[11-May-2025 07:19:45 Europe/Berlin] [2025-05-11 07:19:45] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:19:45 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 07:19:45 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Usuario","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"pendiente"}
+[11-May-2025 07:19:45 Europe/Berlin] Cuenta no aprobada: pendiente
+[11-May-2025 07:24:48 Europe/Berlin] [2025-05-11 07:24:48] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:24:48 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 07:24:48 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Usuario","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"pendiente"}
+[11-May-2025 07:24:49 Europe/Berlin] Cuenta no aprobada: pendiente
+[11-May-2025 07:25:38 Europe/Berlin] [2025-05-11 07:25:38] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:25:38 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 07:25:38 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Usuario","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"pendiente"}
+[11-May-2025 07:25:38 Europe/Berlin] Cuenta no aprobada: pendiente
+[11-May-2025 07:26:15 Europe/Berlin] [2025-05-11 07:26:15] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:26:15 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 07:26:15 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[11-May-2025 07:26:15 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 07:26:15"}
+[11-May-2025 07:26:15 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&
+[11-May-2025 07:26:52 Europe/Berlin] [2025-05-11 07:26:52] === INICIO PROCESAR_LOGIN ===
+[11-May-2025 07:26:52 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[11-May-2025 07:26:52 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[11-May-2025 07:26:52 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 07:26:52"}
+[11-May-2025 07:26:52 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&

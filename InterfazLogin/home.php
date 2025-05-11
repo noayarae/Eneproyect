@@ -41,11 +41,11 @@ $nombre_completo = $_SESSION['nombre_completo'];
             <h2><i class="fas fa-bars"></i> Eneproyect</h2>
         </div>
         <ul>
-            <li><a href="/PortalFunc/Mis_Clientes/registro_cliente/index.php"><i class="fas fa-users"></i> Mis Clientes</a></li>
-            <li><a href="/PortalFunc/Calendario/calendario.php"><i class="fas fa-calendar-alt"></i> Calendario</a></li>
-            <li><a href="/PortalFunc/Mapa/mapa.php"><i class="fas fa-map-marked-alt"></i> Mapa</a></li>
-            <li><a href="/PortalFunc/Ajustes/ajustes.php"><i class="fas fa-cog"></i> Ajustes</a></li>
-            <li><a href="/PortalFunc/Logout/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
+            <li><a href="../PortalFunc/Mis_Clientes/registro_cliente/index.php"><i class="fas fa-users"></i> Mis Clientes</a></li>
+            <li><a href="../PortalFunc/Calendario/calendario.php"><i class="fas fa-calendar-alt"></i> Calendario</a></li>
+            <li><a href="../PortalFunc/Mapa/mapa.php"><i class="fas fa-map-marked-alt"></i> Mapa</a></li>
+            <li><a href="../PortalFunc/Ajustes/ajustes.php"><i class="fas fa-cog"></i> Ajustes</a></li>
+            <li><a href="../PortalFunc/Logout/logout.php"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a></li>
         </ul>
     </aside>
 
