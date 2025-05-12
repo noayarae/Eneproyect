@@ -26,7 +26,7 @@ $telefono = $_SESSION['telefono'];
         </div>
         <ul>
             <li>
-                <a href="/InterfazLogin/home.php">
+                <a href="../InterfazLogin/home.php">
                     <i class="fas fa-house-user"></i>
                     <span class="link-text">Inicio</span>
                 </a>

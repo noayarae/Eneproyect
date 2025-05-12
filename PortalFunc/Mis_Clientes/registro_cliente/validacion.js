@@ -190,5 +190,5 @@ function cerrarRegistro() {
     document.getElementById('registroCliente').style.display = 'none';
     document.getElementById('registroContent').innerHTML = '';
 
-    window.location.href = "/InterfazLogin/home.php";
+    window.location.href = "../InterfazLogin/home.php";
 }

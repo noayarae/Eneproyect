@@ -156,7 +156,7 @@ $(document).ready(function () {
         try {
             // Enviar datos
             const formData = new FormData(this);
-            const response = await fetch('/InterfazLogin/FuncionRegistro/registro.php', {
+            const response = await fetch('registro.php', {
                 method: 'POST',
                 body: formData
             });

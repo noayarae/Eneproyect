@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'vendor/autoload.php'; // Asegúrate de que la ruta es correcta
+require 'vendor/autoload.php';
 use SendGrid\Mail\Mail;
 
 function enviarCorreoValidacion($nombre, $apellido, $dni, $correo) {
@@ -51,7 +51,7 @@ function enviarCorreoValidacion($nombre, $apellido, $dni, $correo) {
     $emailAdmin->setSubject("Nueva solicitud de registro");
     $emailAdmin->addTo("recursoshumanos@eneproyect.com", "Administrador");
 
-    $solicitud_link = "http://localhost:3000/InterfazLogin/FuncionRegistro/ConfirmaRRHH/solicitud.php?dni=" . urlencode($dni);
+    $solicitud_link = "http://localhost/Eneproyect/InterfazLogin/FuncionRegistro/ConfirmaRRHH/solicitud.php?dni=" . urlencode($dni);
     $emailAdmin->addContent("text/html", "
         <p><strong>Nombre:</strong> $nombre $apellido</p>
         <p><strong>DNI:</strong> $dni</p>

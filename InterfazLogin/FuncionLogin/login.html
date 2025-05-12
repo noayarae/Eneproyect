@@ -25,14 +25,14 @@
 
             <div class="forgot-password">
                 <p>¿Olvidaste tu contraseña?</p>
-                <form id="resetForm" action="/InterfazLogin/FuncionLogin/password_recovery.php" method="POST">
+                <form id="resetForm" action="FuncionLogin/password_recovery.php" method="POST">
                     <input type="email" name="email" placeholder="Introduce tu correo" id="email">
                     <button type="submit" class="reset" id="resetButton">Restablecer Contraseña</button>
                 </form>
             </div>
 
             <div class="register-option">
-                <p>¿Aún no tienes una cuenta? <a href="/InterfazLogin/FuncionRegistro/registro.html">Regístrate aquí</a></p>
+                <p>¿Aún no tienes una cuenta? <a href="../FuncionRegistro/registro.html">Regístrate aquí</a></p>
             </div>
             
             <!-- Botón Salir que redirige a eneproyect.com -->
@@ -66,6 +66,6 @@
             });
         }
     </script>
-    <script src="/InterfazLogin/FuncionLogin/login.js"></script>
+    <script src="login.js"></script>
 </body>
 </html>
