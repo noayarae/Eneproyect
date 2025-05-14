@@ -1,7 +1,6 @@
 <?php
 require '../../../InterfazLogin/conexion.php';
 
-
 if (isset($_GET['dni'])) {
     $dni = $_GET['dni'];
     $sql_check = "SELECT * FROM clientes WHERE dni='$dni'";

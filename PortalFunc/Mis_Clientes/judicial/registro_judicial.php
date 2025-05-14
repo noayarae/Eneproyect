@@ -1,4 +1,4 @@
-<?php
+etapa<?php
 require '../../../InterfazLogin/conexion.php';
 require(__DIR__ . "/..//../../InterfazLogin/FuncionLogin/Auth/auth.php");
 

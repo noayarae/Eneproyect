@@ -185,3 +185,28 @@ Stack trace:
 [11-May-2025 10:58:16 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
 [11-May-2025 10:58:16 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-11 10:58:16"}
 [11-May-2025 10:58:16 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&
+[13-May-2025 22:27:39 Europe/Berlin] [2025-05-13 22:27:39] === INICIO PROCESAR_LOGIN ===
+[13-May-2025 22:27:39 Europe/Berlin] Preparando consulta para usuario: Juanperez$$1234*
+[13-May-2025 22:27:39 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[13-May-2025 22:27:39 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-13 22:27:39"}
+[13-May-2025 22:27:39 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*
+[13-May-2025 22:38:24 Europe/Berlin] [2025-05-13 22:38:24] === INICIO PROCESAR_LOGIN ===
+[13-May-2025 22:38:24 Europe/Berlin] Preparando consulta para usuario: Juanperez$$1234*
+[13-May-2025 22:38:24 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[13-May-2025 22:38:24 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-13 22:38:24"}
+[13-May-2025 22:38:24 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*
+[14-May-2025 20:43:57 Europe/Berlin] [2025-05-14 20:43:57] === INICIO PROCESAR_LOGIN ===
+[14-May-2025 20:43:57 Europe/Berlin] Preparando consulta para usuario: Juanperez$$1234*
+[14-May-2025 20:43:57 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[14-May-2025 20:43:57 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-14 20:43:57"}
+[14-May-2025 20:43:57 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*
+[14-May-2025 22:09:35 Europe/Berlin] [2025-05-14 22:09:35] === INICIO PROCESAR_LOGIN ===
+[14-May-2025 22:09:35 Europe/Berlin] Preparando consulta para usuario: Juanperez$$1234*
+[14-May-2025 22:09:35 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[14-May-2025 22:09:35 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-14 22:09:35"}
+[14-May-2025 22:09:35 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*
+[14-May-2025 22:09:57 Europe/Berlin] [2025-05-14 22:09:57] === INICIO PROCESAR_LOGIN ===
+[14-May-2025 22:09:57 Europe/Berlin] Preparando consulta para usuario: Juanperez$$1234*
+[14-May-2025 22:09:57 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[14-May-2025 22:09:57 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-14 22:09:57"}
+[14-May-2025 22:09:57 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*

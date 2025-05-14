@@ -26,31 +26,31 @@ $telefono = $_SESSION['telefono'];
         </div>
         <ul>
             <li>
-                <a href="../InterfazLogin/home.php">
+                <a href="../../InterfazLogin/home.php">
                     <i class="fas fa-house-user"></i>
                     <span class="link-text">Inicio</span>
                 </a>
             </li>
             <li>
-                <a href="/PortalFunc/Mis_Clientes/registro_cliente/index.php">
+                <a href="../Mis_Clientes/registro_cliente/index.php">
                     <i class="fas fa-users"></i>
                     <span class="link-text">Mis Clientes</span>
                 </a>
             </li>
             <li>
-                <a href="/PortalFunc/Calendario/calendario.php" class="active">
+                <a href="../Calendario/calendario.php" class="active">
                     <i class="fas fa-calendar-alt"></i>
                     <span class="link-text">Calendario</span>
                 </a>
             </li>
             <li>
-                <a href="/PortalFunc/Mapa/mapa.php">
+                <a href="../Mapa/mapa.php">
                     <i class="fas fa-map-marked-alt"></i>
                     <span class="link-text">Mapa</span>
                 </a>
             </li>
             <li>
-                <a href="/PortalFunc/Ajustes/ajustes.php">
+                <a href="../Ajustes/ajustes.php">
                     <i class="fas fa-cog"></i>
                     <span class="link-text">Ajustes</span>
                 </a>

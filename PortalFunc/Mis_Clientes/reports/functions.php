@@ -23,6 +23,11 @@ function getMesAnio($mes, $anio)
         '11' => 'Noviembre',
         '12' => 'Diciembre'
     ];
+
+    if (!isset($meses[$mes])) {
+        return 'Mes inválido ' . $anio;
+    }
+
     return $meses[$mes] . ' ' . $anio;
 }
 
@@ -44,59 +49,80 @@ function getMeses()
     ];
 }
 
-function generarReporte($mes, $anio, $conn,$usuario)
+function generarReporte($mes, $anio, $fecha_inicio, $fecha_fin, $conn)
 {
-    $fecha_inicio = $anio . '-' . $mes . '-01';
-    $fecha_fin = date('Y-m-t', strtotime($fecha_inicio));
-
-    $sql_prejudicial = "
-                    SELECT c.*, p.* FROM etapa_prejudicial p 
-                    JOIN clientes c ON p.id_cliente = c.id_cliente 
-                    WHERE p.fecha_acto BETWEEN '$fecha_inicio' AND '$fecha_fin' 
-                    AND c.gestor = '$usuario' 
-                    ORDER BY c.nombre, c.apellidos, p.fecha_acto";
-    $result_prejudicial = $conn->query($sql_prejudicial);
-
-    $sql_judicial = "
-        SELECT c.*, j.*
-        FROM etapa_judicial j
-        JOIN clientes c ON j.id_cliente = c.id_cliente
-        WHERE j.fecha_judicial BETWEEN '$fecha_inicio' AND '$fecha_fin'
-        AND c.gestor = '$usuario'
-        ORDER BY c.nombre, c.apellidos, j.fecha_judicial
-        ";
-    $result_judicial = $conn->query($sql_judicial);
-
-    $sql_clientes = "SELECT * FROM clientes 
-                 WHERE gestor = '$usuario' 
-                 ORDER BY nombre, apellidos";
-    $result_clientes = $conn->query($sql_clientes);
-
+    $clientes_prejudicial = [];
+    $clientes_judicial = [];
     $clientes_con_historial = [];
-    while ($row = $result_prejudicial->fetch_assoc()) {
-        $clientes_con_historial[$row['id_cliente']] = true;
-    }
-    while ($row = $result_judicial->fetch_assoc()) {
-        $clientes_con_historial[$row['id_cliente']] = true;
+    $clientes_sin_historial = [];
+
+    if ($fecha_inicio && $fecha_fin) {
+        // Usar rango de fechas personalizado
+        $sql_prejudicial = "SELECT c.*, p.* FROM etapa_prejudicial p JOIN clientes c ON p.id_cliente = c.id_cliente WHERE p.fecha_acto BETWEEN ? AND ? ORDER BY c.nombre, c.apellidos, p.fecha_acto";
+        $sql_judicial = "SELECT c.*, j.* FROM etapa_judicial j JOIN clientes c ON j.id_cliente = c.id_cliente WHERE j.fecha_judicial BETWEEN ? AND ? ORDER BY c.nombre, c.apellidos, j.fecha_judicial";
+
+        $stmt_prejudicial = $conn->prepare($sql_prejudicial);
+        $stmt_prejudicial->bind_param("ss", $fecha_inicio, $fecha_fin);
+        $stmt_prejudicial->execute();
+        $result_prejudicial = $stmt_prejudicial->get_result();
+
+        while ($row = $result_prejudicial->fetch_assoc()) {
+            if (!empty($row['id_cliente'])) { // Validar que id_cliente exista
+                $clientes_prejudicial[$row['id_cliente']][] = $row;
+                $clientes_con_historial[$row['id_cliente']] = true;
+            }
+        }
+
+        $stmt_judicial = $conn->prepare($sql_judicial);
+        $stmt_judicial->bind_param("ss", $fecha_inicio, $fecha_fin);
+        $stmt_judicial->execute();
+        $result_judicial = $stmt_judicial->get_result();
+
+        while ($row = $result_judicial->fetch_assoc()) {
+            if (!empty($row['id_cliente'])) { // Validar que id_cliente exista
+                $clientes_judicial[$row['id_cliente']][] = $row;
+                $clientes_con_historial[$row['id_cliente']] = true;
+            }
+        }
+    } else {
+        // Usar mes y año
+        $fecha_inicio = $anio . '-' . $mes . '-01';
+        $fecha_fin = date('Y-m-t', strtotime($fecha_inicio));
+
+        $sql_prejudicial = "SELECT c.*, p.* FROM etapa_prejudicial p JOIN clientes c ON p.id_cliente = c.id_cliente WHERE p.fecha_acto BETWEEN ? AND ? ORDER BY c.nombre, c.apellidos, p.fecha_acto";
+        $sql_judicial = "SELECT c.*, j.* FROM etapa_judicial j JOIN clientes c ON j.id_cliente = c.id_cliente WHERE j.fecha_judicial BETWEEN ? AND ? ORDER BY c.nombre, c.apellidos, j.fecha_judicial";
+
+        $stmt_prejudicial = $conn->prepare($sql_prejudicial);
+        $stmt_prejudicial->bind_param("ss", $fecha_inicio, $fecha_fin);
+        $stmt_prejudicial->execute();
+        $result_prejudicial = $stmt_prejudicial->get_result();
+
+        while ($row = $result_prejudicial->fetch_assoc()) {
+            if (!empty($row['id_cliente'])) { // Validar que id_cliente exista
+                $clientes_prejudicial[$row['id_cliente']][] = $row;
+                $clientes_con_historial[$row['id_cliente']] = true;
+            }
+        }
+
+        $stmt_judicial = $conn->prepare($sql_judicial);
+        $stmt_judicial->bind_param("ss", $fecha_inicio, $fecha_fin);
+        $stmt_judicial->execute();
+        $result_judicial = $stmt_judicial->get_result();
+
+        while ($row = $result_judicial->fetch_assoc()) {
+            if (!empty($row['id_cliente'])) { // Validar que id_cliente exista
+                $clientes_judicial[$row['id_cliente']][] = $row;
+                $clientes_con_historial[$row['id_cliente']] = true;
+            }
+        }
     }
 
-    $clientes_sin_historial = [];
+    // Obtener todos los clientes
+    $result_clientes = $conn->query("SELECT * FROM clientes ORDER BY nombre, apellidos");
     while ($row = $result_clientes->fetch_assoc()) {
         if (!isset($clientes_con_historial[$row['id_cliente']])) {
             $clientes_sin_historial[] = $row;
         }
-    }
-
-    $clientes_prejudicial = [];
-    $result_prejudicial->data_seek(0);
-    while ($row = $result_prejudicial->fetch_assoc()) {
-        $clientes_prejudicial[$row['id_cliente']][] = $row;
-    }
-
-    $clientes_judicial = [];
-    $result_judicial->data_seek(0);
-    while ($row = $result_judicial->fetch_assoc()) {
-        $clientes_judicial[$row['id_cliente']][] = $row;
     }
 
     return [$clientes_prejudicial, $clientes_judicial, $clientes_sin_historial];
@@ -127,74 +153,47 @@ function mostrarCliente($cliente, $prejudiciales, $judiciales, $encabezados_prej
 ?>
     <div class="client-box">
         <div class="client-header">
-            <h4><?php echo htmlspecialchars($cliente['nombre'] . ' ' . $cliente['apellidos']); ?></h4>
+            <h4><?= htmlspecialchars($cliente['nombre'] . ' ' . $cliente['apellidos']) ?></h4>
         </div>
         <div class="client-body">
             <?php if (!empty($prejudiciales) && mostrarEncabezados($encabezados_prejudicial)): ?>
                 <h5>Etapa Pre-Judicial</h5>
                 <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <?php foreach ($encabezados_prejudicial as $encabezado): ?>
-                                <th><?php echo $encabezado; ?></th>
-                            <?php endforeach; ?>
-                        </tr>
-                    </thead>
+                    <thead><tr>
+                        <?php foreach ($encabezados_prejudicial as $encabezado): ?>
+                            <th><?= $encabezado ?></th>
+                        <?php endforeach; ?>
+                    </tr></thead>
                     <tbody>
-                        <?php foreach ($prejudiciales as $prejudicial): ?>
+                        <?php foreach ($prejudiciales as $p): ?>
                             <tr>
-                                <?php if (in_array('Fecha', $encabezados_prejudicial)): ?>
-                                    <td><?php echo formatDate($prejudicial['fecha_acto']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Fecha Clave', $encabezados_prejudicial)): ?>
-                                    <td><?php echo formatDate($prejudicial['fecha_clave']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Acto', $encabezados_prejudicial)): ?>
-                                    <td><?php echo htmlspecialchars($prejudicial['acto']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Acción en Fecha Clave', $encabezados_prejudicial)): ?>
-                                    <td><?php echo htmlspecialchars($prejudicial['accion_fecha_clave']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Descripción', $encabezados_prejudicial)): ?>
-                                    <td><?php echo htmlspecialchars($prejudicial['descripcion']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Objetivo Logrado', $encabezados_prejudicial)): ?>
-                                    <td><?php echo htmlspecialchars($prejudicial['objetivo_logrado']); ?></td>
-                                <?php endif; ?>
+                                <?php if (in_array('Fecha', $encabezados_prejudicial)): ?><td><?= formatDate($p['fecha_acto']) ?></td><?php endif; ?>
+                                <?php if (in_array('Fecha Clave', $encabezados_prejudicial)): ?><td><?= formatDate($p['fecha_clave']) ?></td><?php endif; ?>
+                                <?php if (in_array('Acto', $encabezados_prejudicial)): ?><td><?= htmlspecialchars($p['acto']) ?></td><?php endif; ?>
+                                <?php if (in_array('Acción en Fecha Clave', $encabezados_prejudicial)): ?><td><?= htmlspecialchars($p['accion_fecha_clave']) ?></td><?php endif; ?>
+                                <?php if (in_array('Descripción', $encabezados_prejudicial)): ?><td><?= htmlspecialchars($p['descripcion']) ?></td><?php endif; ?>
+                                <?php if (in_array('Objetivo Logrado', $encabezados_prejudicial)): ?><td><?= htmlspecialchars($p['objetivo_logrado']) ?></td><?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
                 </table>
             <?php endif; ?>
-
             <?php if (!empty($judiciales) && mostrarEncabezados($encabezados_judicial)): ?>
                 <h5>Etapa Judicial</h5>
                 <table class="table table-bordered table-striped">
-                    <thead>
-                        <tr>
-                            <?php foreach ($encabezados_judicial as $encabezado): ?>
-                                <th><?php echo $encabezado; ?></th>
-                            <?php endforeach; ?>
-                        </tr>
-                    </thead>
+                    <thead><tr>
+                        <?php foreach ($encabezados_judicial as $encabezado): ?>
+                            <th><?= $encabezado ?></th>
+                        <?php endforeach; ?>
+                    </tr></thead>
                     <tbody>
-                        <?php foreach ($judiciales as $judicial): ?>
+                        <?php foreach ($judiciales as $j): ?>
                             <tr>
-                                <?php if (in_array('Fecha', $encabezados_judicial)): ?>
-                                    <td><?php echo formatDate($judicial['fecha_judicial']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Fecha Clave', $encabezados_judicial)): ?>
-                                    <td><?php echo formatDate($judicial['fecha_clave_judicial']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Acto', $encabezados_judicial)): ?>
-                                    <td><?php echo htmlspecialchars($judicial['acto_judicial']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Acción en Fecha Clave', $encabezados_judicial)): ?>
-                                    <td><?php echo htmlspecialchars($judicial['accion_en_fecha_clave']); ?></td>
-                                <?php endif; ?>
-                                <?php if (in_array('Descripción', $encabezados_judicial)): ?>
-                                    <td><?php echo htmlspecialchars($judicial['descripcion_judicial']); ?></td>
-                                <?php endif; ?>
+                                <?php if (in_array('Fecha', $encabezados_judicial)): ?><td><?= formatDate($j['fecha_judicial']) ?></td><?php endif; ?>
+                                <?php if (in_array('Fecha Clave', $encabezados_judicial)): ?><td><?= formatDate($j['fecha_clave_judicial']) ?></td><?php endif; ?>
+                                <?php if (in_array('Acto', $encabezados_judicial)): ?><td><?= htmlspecialchars($j['acto_judicial']) ?></td><?php endif; ?>
+                                <?php if (in_array('Acción en Fecha Clave', $encabezados_judicial)): ?><td><?= htmlspecialchars($j['accion_en_fecha_clave']) ?></td><?php endif; ?>
+                                <?php if (in_array('Descripción', $encabezados_judicial)): ?><td><?= htmlspecialchars($j['descripcion_judicial']) ?></td><?php endif; ?>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -202,10 +201,10 @@ function mostrarCliente($cliente, $prejudiciales, $judiciales, $encabezados_prej
             <?php endif; ?>
         </div>
     </div>
-<?php
+    <?php
 }
 
-function mostrarClientesSinHistorial($clientes_sin_historial, $encabezados_sin_historial)
+function mostrarClientesSinHistorial($clientes, $encabezados)
 {
 ?>
     <div class="client-box">
@@ -214,29 +213,23 @@ function mostrarClientesSinHistorial($clientes_sin_historial, $encabezados_sin_h
         </div>
         <div class="client-body">
             <table class="table table-bordered table-striped">
-                <thead>
-                    <tr>
-                        <?php foreach ($encabezados_sin_historial as $encabezado): ?>
-                            <th><?php echo $encabezado; ?></th>
-                        <?php endforeach; ?>
-                    </tr>
-                </thead>
+                <thead><tr>
+                    <?php foreach ($encabezados as $encabezado): ?>
+                        <th><?= $encabezado ?></th>
+                    <?php endforeach; ?>
+                </tr></thead>
                 <tbody>
-                    <?php foreach ($clientes_sin_historial as $cliente): ?>
+                    <?php foreach ($clientes as $cliente): ?>
                         <tr>
-                            <?php if (in_array('Nombres', $encabezados_sin_historial)): ?>
-                                <td><?php echo htmlspecialchars($cliente['nombre'] . ' ' . $cliente['apellidos']); ?></td>
-                            <?php endif; ?>
-                            <?php if (in_array('DNI', $encabezados_sin_historial)): ?>
-                                <td><?php echo htmlspecialchars($cliente['dni']); ?></td>
-                            <?php endif; ?>
+                            <?php if (in_array('Nombres', $encabezados)): ?><td><?= htmlspecialchars($cliente['nombre'] . ' ' . $cliente['apellidos']) ?></td><?php endif; ?>
+                            <?php if (in_array('DNI', $encabezados)): ?><td><?= htmlspecialchars($cliente['dni']) ?></td><?php endif; ?>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </div>
     </div>
-<?php
+    <?php
 }
 
 function mostrarEncabezados($encabezados)

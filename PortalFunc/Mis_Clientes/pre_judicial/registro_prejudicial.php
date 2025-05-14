@@ -29,6 +29,13 @@ if ($id_cliente) {
                 $etapa_judicial = true;
             }
         }
+        // Formatear la fecha de desembolso
+        $fecha_desembolso = isset($cliente['fecha_desembolso']) ? new DateTime($cliente['fecha_desembolso']) : null;
+        $fecha_desembolso_formateada = $fecha_desembolso ? $fecha_desembolso->format('d/m/Y') : '';
+
+        // Formatear la fecha de vencimiento
+        $fecha_vencimiento = isset($cliente['fecha_vencimiento']) ? new DateTime($cliente['fecha_vencimiento']) : null;
+        $fecha_vencimiento_formateada = $fecha_vencimiento ? $fecha_vencimiento->format('d/m/Y') : '';
     } else {
         die("Error: El ID del cliente no existe en la base de datos.");
     }
@@ -40,7 +47,7 @@ $message = "";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     /* $fecha_acto = date('Y-m-d H:i:s'); */
-    $fecha_acto = $_POST["fecha_acto"]; /* hasta mientras esta esto */
+    $fecha_acto = $_POST["fecha_acto"]; /* asta mientras esta esto */
 
     // Obtener la fecha de inicio del caso (fecha_acto del primer registro)
     $sql_select_inicio = "SELECT fecha_acto, saldo_int FROM etapa_prejudicial WHERE id_cliente = $id_cliente ORDER BY id ASC LIMIT 1";
@@ -134,26 +141,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         notas
         ) VALUES (?, ?, ?, ?, '09:00:00', 60, ?)";
 
-            $stmt = $conn->prepare($sql_evento);
-            $stmt->bind_param(
-                "sssss",
-                $_SESSION['usuario'],
-                $cliente['dni'],
-                $tipoEventoMapeado,   // Tipo de evento 
-                $fecha_clave,         // Fecha clave del formulario
-                $notas_evento         // Notas con la acción y detalles
-            );
+        $stmt = $conn->prepare($sql_evento);
+        $stmt->bind_param(
+            "sssss",
+            $_SESSION['usuario'],
+            $cliente['dni'],
+            $tipoEventoMapeado,   // Tipo de evento 
+            $fecha_clave,         // Fecha clave del formulario
+            $notas_evento         // Notas con la acción y detalles
+        );
 
-            if ($stmt->execute()) {
-                $message = "Registro exitoso y evento agregado al calendario";
-            } else {
-                $message = "Registro exitoso, pero error al agregar evento: " . $stmt->error;
-            }
-            $stmt->close();
+        if ($stmt->execute()) {
+            $message = "Registro exitoso y evento agregado al calendario";
         } else {
-            $message = "Error: " . $sql_insert . "<br>" . $conn->error;
+            $message = "Registro exitoso, pero error al agregar evento: " . $stmt->error;
         }
+        $stmt->close();
+    } else {
+        $message = "Error: " . $sql_insert . "<br>" . $conn->error;
     }
+}
 
 // Función para calcular dias_mora_PJ
 function calcularDiasMoraPJ($fecha_acto, $fecha_inicio_caso)
@@ -221,8 +228,6 @@ function calcularDiasDesdeFechaClave($fecha_acto_siguiente, $fecha_clave)
 $conn->close();
 ?>
 
-
-
 <!DOCTYPE html>
 <html>
 
@@ -273,7 +278,7 @@ $conn->close();
             <div class="row mb-2">
                 <div class="col-md-4">
                     <label class="fw-bold">Fecha Desembolso:</label>
-                    <input type="text" value="<?php echo htmlspecialchars($cliente['fecha_desembolso'] ?? ''); ?>" class="form-control" readonly>
+                    <input type="text" value="<?php echo htmlspecialchars($fecha_desembolso_formateada); ?>" class="form-control" readonly>
                 </div>
                 <div class="col-md-4">
                     <label class="fw-bold">Monto:</label>
@@ -288,7 +293,7 @@ $conn->close();
             <div class="row mb-2">
                 <div class="col-md-4">
                     <label class="fw-bold">Fecha Vencimiento:</label>
-                    <input type="text" value="<?php echo htmlspecialchars($cliente['fecha_vencimiento'] ?? ''); ?>" class="form-control" readonly>
+                    <input type="text" value="<?php echo htmlspecialchars($fecha_vencimiento_formateada); ?>" class="form-control" readonly>
                 </div>
                 <div class="col-md-4">
                     <label class="fw-bold">Plazo de Crédito (días):</label>
@@ -303,7 +308,7 @@ $conn->close();
 
         <div class="row">
             <div>
-                <h5 class="titulo-principal">REGISTRO DE ETAPA PRE-JUDICIAL Y JUDICIAL</h5>
+                <h5 class="titulo-principal">REGISRTO DE ETAPA PRE-JUDICIAL Y JUDICIAL</h5>
             </div>
             <div class="col-md-12 border p-3">
                 <?php if ($message): ?>
@@ -454,7 +459,7 @@ $conn->close();
                             </div>
                         </div>
                     </div>
-                    <!-- hasta aqui -->
+                    <!-- asta aqui -->
                     <div class="row mb-2">
                         <div class="col-md-6">
                             <label class="fw-bold">Documento de Evidencia:</label>
@@ -499,6 +504,12 @@ $conn->close();
 
 
     <script>
+        document.querySelector('input[type="date"]').addEventListener('change', function(e) {
+            let fecha = new Date(e.target.value);
+            let fechaFormateada = fecha.toLocaleDateString('es-ES');
+            e.target.value = fechaFormateada;
+        });
+
         function limpiarArchivo(inputId) {
             document.getElementById(inputId).value = '';
         }
@@ -548,7 +559,7 @@ $conn->close();
             event.preventDefault(); // Evita el envío del formulario si la validación falla
             var formData = new FormData(this);
 
-            fetch('http://localhost:3000/PortalFunc/Mis_Clientes/judicial/registro_judicial.php', {
+            fetch('http://localhost/Eneproyect/PortalFunc/Mis_Clientes/judicial/registro_judicial.php', {
                     method: 'POST',
                     body: formData
                 })
