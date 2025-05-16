@@ -20,8 +20,21 @@ if ($id_cliente) {
         $fecha_desembolso = new DateTime($cliente['fecha_desembolso']);
         $fecha_vencimiento = new DateTime($cliente['fecha_vencimiento']);
         $plazo_credito = $fecha_vencimiento->diff($fecha_desembolso)->days;
+
+        // Calcular el monto abonado
+        // Función para formatear dinero con separador de miles y 2 decimales
+        function formatMoney($amount)
+        {
+            return number_format($amount, 2, '.', ',');
+        }
+
         // Calcular el monto abonado
         $monto_abonado = $cliente['monto'] - $cliente['saldo'];
+
+        // Formatear montos para mostrarlos
+        $monto_formateado       = formatMoney($cliente['monto']);
+        $monto_abonado_formateado = formatMoney($monto_abonado);
+        $saldo_formateado       = formatMoney($cliente['saldo']);
     } else {
         die("Error: El ID del cliente no existe en la base de datos.");
     }
@@ -74,13 +87,13 @@ $conn->close();
                 </div>
                 <!-- cuarta columna -->
                 <div class="col-md-2">
-                    <p><strong>Monto:</strong> <?php echo htmlspecialchars($cliente['monto']); ?></p>
+                    <p><strong>Monto:</strong> <?php echo htmlspecialchars($monto_formateado); ?></p>
                     <p><strong>Plazo de Crédito (días):</strong> <?php echo htmlspecialchars($plazo_credito); ?></p>
                 </div>
                 <!-- quinta columna -->
                 <div class="col-md-2">
-                    <p><strong>Monto Abonado:</strong> <?php echo htmlspecialchars($monto_abonado); ?></p>
-                    <p><strong>Saldo:</strong> <?php echo htmlspecialchars($cliente['saldo']); ?></p>
+                    <p><strong>Monto Abonado:</strong> <?php echo htmlspecialchars($monto_abonado_formateado); ?></p>
+                    <p><strong>Saldo:</strong> <?php echo htmlspecialchars($saldo_formateado); ?></p>
                 </div>
             </div>
         </div>
@@ -137,9 +150,9 @@ $conn->close();
                                 <td>{$row['dias_de_mora']}</td>
                                 <td>{$row['dias_mora_PJ']}</td>
                                 <td>{$row['interes']}</td>
-                                <td>{$row['saldo_int']}</td>
-                                <td>{$row['monto_amortizado']}</td>
-                                <td>{$row['saldo_fecha']}</td>
+                                <td>" . htmlspecialchars(formatMoney((float)($row['saldo_int'] ?? 0))) . "</td>
+                                <td>" . htmlspecialchars(formatMoney((float)($row['monto_amortizado'] ?? 0))) . "</td>
+                                <td>" . htmlspecialchars(formatMoney((float)($row['saldo_fecha'] ?? 0))) . "</td>
                               </tr>";
                             $count++;
                         }
