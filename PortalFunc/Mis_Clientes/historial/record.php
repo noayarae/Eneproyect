@@ -64,9 +64,12 @@ $conn->close();
 </head>
 
 <body class="d-flex flex-column h-100">
+    <div class="titulo-principal">
+        <h5>HISTORIAL DEL CLIENTE</h5>
+    </div>
     <div class="container-fluid flex-grow-1">
         <div class="titulo-cliente border p-1">
-            <h5>INFORMACION DEL CLIENTE</h5>
+            <h5>Informcaion del Cliente</h5>
         </div>
         <div class="client-info border p-3 mb-3">
             <div class="row">
@@ -97,12 +100,9 @@ $conn->close();
                 </div>
             </div>
         </div>
-        <div class="titulo-historial border p-1">
-            <h5>HISTORIAL DEL CLIENTE</h5>
-        </div>
-        <div class="historial border p-3">
+        <div class="historial border p-0">
             <div class="table-responsive">
-                <h5>HISTORIAL PRE-JUDICIAL</h5>
+                <h5>Historial Pre-Judicial</h5>
             </div>
             <div class="scrollable-table-container">
                 <table class="table table-bordered table-striped table-fixed">
@@ -162,7 +162,7 @@ $conn->close();
             </div>
 
             <div class="table-responsive">
-                <h5>HISTORIAL JUDICIAL</h5>
+                <h5>Historial Judicial</h5>
             </div>
             <div class="scrollable-table-container">
                 <table class="table table-bordered table-striped table-fixed-judicial">
@@ -208,7 +208,7 @@ $conn->close();
         </div>
     </div>
 
-    <div class="fixed-buttons mt-3">
+    <div class="fixed-buttons mt-3 p-2">
         <button type="button" class="btn btn-primary" onclick="agregarHistoria()">Agregar Historia</button>
         <button type="button" class="btn btn-secondary" onclick="history.back()">Regresar</button>
         <button type="button" class="btn btn-danger" onclick="window.location.href='../registro_cliente/index.php'">Salir</button>

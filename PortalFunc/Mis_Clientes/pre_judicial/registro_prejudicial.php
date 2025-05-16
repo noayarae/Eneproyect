@@ -524,7 +524,7 @@ $conn->close();
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-12 ">
                         <h5 class="titulo-etapas">Próxima Fecha</h5>
                         <div class="row mb-2 align-items-center">
                             <div class="col-md-1 fw-bold">
@@ -625,7 +625,7 @@ $conn->close();
             event.preventDefault(); // Evita el envío del formulario si la validación falla
             var formData = new FormData(this);
 
-            fetch('http://localhost/Eneproyect/PortalFunc/Mis_Clientes/judicial/registro_judicial.php', {
+            fetch('../judicial/registro_judicial.php', {
                     method: 'POST',
                     body: formData
                 })

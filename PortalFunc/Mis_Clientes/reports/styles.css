@@ -1,6 +1,8 @@
 body {
-    background: #FFD700;
-    margin-top: 100px;
+
+    background:#3385ff; 
+    margin-top: 110px;
+    margin-bottom: 20px;
     /* o la misma altura del .reporte-header */
 }
 
@@ -47,9 +49,10 @@ h5 {
 }
 
 .client-header {
-    background-color: #f9f9f9;
-    padding: 10px;
+    background-color: #003366;
+    padding: 0px;
     border-bottom: 1px solid #ccc;
+    color: #ffffff;
 }
 
 .client-header h4 {
@@ -81,7 +84,7 @@ h5 {
 
 /* Cambiar fondo del contenedor "reporte-header" a negro */
 .reporte-header {
-    background-color: #000000;
+    background-color: #003366;
     /* Negro */
     padding: 5px;
     /* Opcional, para dar algo de espacio interno */
@@ -112,7 +115,7 @@ h5 {
     /* Ajusta el tamaño de la fuente si es necesario */
     border: none;
     cursor: pointer;
-    background-color: #003366;
+    background-color: #3385ff;
     transition: background-color 0.3s;
     /* Transición suave */
     font-weight: bold;

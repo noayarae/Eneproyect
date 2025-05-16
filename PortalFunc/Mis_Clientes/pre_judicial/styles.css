@@ -1,5 +1,5 @@
 body {
-    background: #0056b3;
+    background: #3385ff;
 }
 
 h5 {
@@ -22,7 +22,7 @@ h5 {
     border-radius: 0 !important;
 }
 
-.form-etapas{
+.form-etapas {
     margin-bottom: 2px;
     padding: 8px;
 }
@@ -57,7 +57,8 @@ h5 {
 .titulo-etapas {
     color: #FFFFFF;
     text-align: left;
-    background-color: #4F5D73; /* Plomo azulado */
+    background-color: #4F5D73;
+    /* Plomo azulado */
     padding: 2px;
     margin: 2px;
     text-align: center;
@@ -108,7 +109,7 @@ h5 {
     /* definir la altura */
     font-weight: bold;
     /* en negrita */
-    background-color: #0056b3;
+    background-color: #003366;
     /* Color de fondo azul por defecto */
     color: #FFFFFF;
     /* Color del texto blanco */
@@ -145,12 +146,15 @@ h5 {
 input,
 textarea,
 select {
-    border-radius: 0 !important; /* Elimina los bordes redondeados */
-    border: 1px solid #ccc; /* Opcional: Define un borde plano */
-    padding: 5px; /* Espacio interno */
+    border-radius: 0 !important;
+    /* Elimina los bordes redondeados */
+    border: 1px solid #ccc;
+    /* Opcional: Define un borde plano */
+    padding: 5px;
+    /* Espacio interno */
 }
 
 #notif_compromiso_pago_evidencia {
-    width: 100% !important; /* Ajusta según sea necesario */
+    width: 100% !important;
+    /* Ajusta según sea necesario */
 }
-

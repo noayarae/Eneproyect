@@ -13,7 +13,7 @@
     position: sticky;
     left: 0;
     top: 0; /* Fija la posición en la parte superior */
-    background-color: #FFD700;
+    background-color: #808080;
     z-index: 5; /* MÁS ALTO que otros encabezados */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -23,7 +23,7 @@
     position: -webkit-sticky; /* Para Safari */
     position: sticky;
     left: 0;
-    background-color: #FFD700;
+    background-color: #808080;
     z-index: 4; /* MÁS ALTO que otros td, pero MENOR que el th */
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
@@ -48,7 +48,7 @@
     position: -webkit-sticky;
     position: sticky;
     top: 0;
-    background-color: #FFD700;
+    background-color: #808080;
     z-index: 3; /* Debajo del encabezado de "N°" */
     text-align: left;
     vertical-align: top;
@@ -86,15 +86,15 @@
 .table-fixed th:nth-child(5),/* Descripción */
 .table-fixed td:nth-child(5) {
     width: 320px;
-    min-width: 600px;
-    max-width: 600px;
+    min-width: 400px;
+    max-width: 400px;
 }
 
 .table-fixed th:nth-child(6),/* Notificación */
 .table-fixed td:nth-child(6) {
     width: 320px;
-    min-width: 400px;
-    max-width: 400px;
+    min-width: 300px;
+    max-width: 300px;
 }
 
 .table-fixed th:nth-child(7),/* Evidencia 1 */
@@ -102,8 +102,8 @@
 .table-fixed th:nth-child(8),/* Evidencia 2 */
 .table-fixed td:nth-child(8) {
     width: 320px;
-    min-width: 400px;
-    max-width: 400px;
+    min-width: 300px;
+    max-width: 300px;
 }
 .table-fixed th:nth-child(9),/* Fecha Clave */
 .table-fixed td:nth-child(9) {
@@ -146,14 +146,14 @@
 .table-fixed-judicial th:nth-child(8),/* Descripcion judicial*/
 .table-fixed-judicial td:nth-child(8){
     width: 320px;
-    min-width: 600px;
-    max-width: 600px;
+    min-width: 400px;
+    max-width: 400px;
 }
 .table-fixed-judicial th:nth-child(9),/* Doc evidencia judicial*/
 .table-fixed-judicial td:nth-child(9){
     width: 320px;
-    min-width: 400px;
-    max-width: 400px;
+    min-width: 300px;
+    max-width: 300px;
 }
 .table-fixed-judicial th:nth-child(12),/* actor judicial*/
 .table-fixed-judicial td:nth-child(12){
