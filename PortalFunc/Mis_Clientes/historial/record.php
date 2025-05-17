@@ -237,24 +237,105 @@ $conn->close();
                 openPreview(fileUrl);
             }
         });
+        let previewContainer = null;
+        let targetTableContainer = null;
+        let ticking = false;
+        let lastTop = null;
 
-        //Para la vista previa
+        function agregarHistoria() {
+            var idCliente = <?php echo json_encode($id_cliente); ?>;
+            if (idCliente) {
+                window.location.href = '../pre_judicial/registro_prejudicial.php?id_cliente=' + encodeURIComponent(idCliente);
+            } else {
+                alert("Error: ID del cliente no disponible.");
+            }
+        }
+
+        document.addEventListener('click', function(event) {
+            if (event.target.classList.contains('file-link')) {
+                event.preventDefault();
+                var fileUrl = event.target.getAttribute('data-url');
+                openPreview(fileUrl);
+            }
+        });
+
         function openPreview(url) {
-            var previewContainer = document.getElementById('previewContainer');
+            previewContainer = document.getElementById('previewContainer');
             var previewFrame = document.getElementById('previewFrame');
-            previewFrame.src = url;
-            previewFrame.onload = function() {
-                previewContainer.style.display = 'flex'; // Usa flex para centrar
-            };
-            previewFrame.onerror = function() {
-                alert('El archivo no se puede mostrar. Verifica la URL o la existencia del archivo.');
-            };
+
+            // Busca la tabla más cercana
+            targetTableContainer = event.target.closest('.scrollable-table-container');
+
+            if (targetTableContainer) {
+                const rect = targetTableContainer.getBoundingClientRect();
+
+                // Reiniciar lastTop
+                lastTop = null;
+
+                // Inicializa la posición con espacio lateral
+                previewContainer.style.top = rect.top + 'px';
+                previewContainer.style.height = targetTableContainer.offsetHeight + 'px';
+
+                const containerRightOffset = window.innerWidth - (rect.left + rect.width);
+                previewContainer.style.right = `${containerRightOffset + 20}px`; // Espacio lateral
+
+                previewFrame.src = url;
+                previewFrame.onload = function() {
+                    previewContainer.style.display = 'flex';
+                };
+                previewFrame.onerror = function() {
+                    alert('El archivo no se puede mostrar.');
+                };
+
+                window.addEventListener('scroll', onScroll);
+            } else {
+                alert('No se encontró el contenedor de la tabla.');
+            }
+        }
+
+        function onScroll() {
+            if (!ticking && previewContainer && targetTableContainer) {
+                requestAnimationFrame(() => {
+                    updatePreviewPosition();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        }
+
+        function updatePreviewPosition() {
+            if (!previewContainer || !targetTableContainer) return;
+
+            var rect = targetTableContainer.getBoundingClientRect();
+            const newTop = rect.top;
+            const newHeight = targetTableContainer.offsetHeight;
+
+            // Calculamos la distancia desde la derecha del contenedor de la tabla
+            const containerRightOffset = window.innerWidth - (rect.left + rect.width);
+
+            // Aplicamos la posición dinámica
+            if (lastTop === null || Math.abs(newTop - lastTop) > 2) {
+                previewContainer.style.top = newTop + 'px';
+                previewContainer.style.height = newHeight + 'px';
+                previewContainer.style.right = `${containerRightOffset + 20}px`; // Aquí está el margen
+                lastTop = newTop;
+            }
         }
 
         function closePreview() {
-            var previewContainer = document.getElementById('previewContainer');
-            previewContainer.style.display = 'none';
+            previewContainer = null;
+            targetTableContainer = null;
+            lastTop = null; // Reiniciar posición
+            window.removeEventListener('scroll', onScroll);
+            document.getElementById('previewContainer').style.display = 'none';
         }
+
+        // Recalcula la posición si cambia el tamaño de la ventana
+        window.addEventListener('resize', function() {
+            if (previewContainer && targetTableContainer && previewContainer.style.display !== 'none') {
+                updatePreviewPosition();
+            }
+        });
     </script>
 </body>
 
