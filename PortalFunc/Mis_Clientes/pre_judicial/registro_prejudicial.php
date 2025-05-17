@@ -56,7 +56,7 @@ if ($id_cliente) {
 
 $message = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tipo_formulario"]) && $_POST["tipo_formulario"] === "prejudicial") {
     /* $fecha_acto = date('Y-m-d H:i:s'); */
     $fecha_acto = $_POST["fecha_acto"]; /* asta mientras esta esto */
 
@@ -283,7 +283,7 @@ $conn->close();
                     <p><strong>Monto:</strong> <?php echo htmlspecialchars($monto_formateado); ?></p>
                     <p><strong>Plazo de Crédito (días):</strong> <?php echo htmlspecialchars($plazo_credito); ?></p>
                 </div>
-                
+
                 <!-- Quinta columna -->
                 <div class="col-md-2">
                     <p><strong>Monto Abonado:</strong> <?php echo htmlspecialchars($monto_abonado_formateado); ?></p>
@@ -303,6 +303,7 @@ $conn->close();
                 <!-- Formulario de Etapa Pre-Judicial -->
                 <form id="preJudicialForm" method="post" enctype="multipart/form-data" class="form-container <?php echo !$etapa_judicial ? 'active' : ''; ?>" onsubmit="return enviarFormulario()">
                     <input type="hidden" name="id_cliente" value="<?php echo htmlspecialchars($id_cliente); ?>">
+                    <input type="hidden" name="tipo_formulario" value="prejudicial"> <!-- 👈 Este es el nuevo campo -->
                     <h5 class="titulo-etapas">Etapa Pre-judicialL</h5>
                     <!-- Fecha Acto solamente para prueba -->
                     <div class="mb-2">
@@ -450,6 +451,7 @@ $conn->close();
                 <!-- Formulario de Etapa Judicial -->
                 <form id="judicialForm" method="post" enctype="multipart/form-data" class="form-container <?php echo $etapa_judicial ? 'active' : ''; ?>">
                     <input type="hidden" name="id_cliente" value="<?php echo htmlspecialchars($id_cliente); ?>">
+                    <input type="hidden" name="tipo_formulario" value="judicial"> <!-- 👈 Este es el nuevo campo -->
                     <h5 class="titulo-etapas">Etapa Judicial</h5>
                     <div id="message"></div>
                     <!-- borrar de aqui, solo esta por mientras -->
@@ -574,7 +576,6 @@ $conn->close();
             let fechaFormateada = fecha.toLocaleDateString('es-ES');
             e.target.value = fechaFormateada;
         }); */
-        aa
 
         function limpiarArchivo(inputId) {
             document.getElementById(inputId).value = '';

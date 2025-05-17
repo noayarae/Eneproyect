@@ -4,7 +4,7 @@ require(__DIR__ . "/..//../../InterfazLogin/FuncionLogin/Auth/auth.php");
 
 $message = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["tipo_formulario"]) && $_POST["tipo_formulario"] === "judicial") {
     // Establecer la fecha y hora actual
     /* $fecha_judicial = date('Y-m-d'); */
     $fecha_judicial = $_POST["fecha_judicial"];
