@@ -175,16 +175,16 @@
     position: fixed;
     top: 0;
     right: 0;
-    background-color: white;
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+    height: 100%;
+    width: 40%;
+    background-color: #003366;
+    box-shadow: -3px 0 5px #000000;
     overflow-y: auto;
     display: none;
-    padding: 20px;
-    width: 40%;
-    transform: translateX(35px); /* Ajusta este valor para el espacio */
-    transition: transform 0s ease; /* opcional, para efecto suave */
+    padding: 10px;
 }
 
+/* Asegura que el iframe dentro del contenedor de vista previa ocupe todo el espacio disponible */
 .preview-container iframe {
     width: 100%;
     height: 100%;
@@ -192,7 +192,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    
 }
 
 .preview-container img {
@@ -201,8 +200,20 @@
     object-fit: contain;
 }
 
-@media (max-width: 768px) {
-    .preview-container {
-        display: none !important;
-    }
+/* para boton de la vista previa */
+.close-btn {
+    background-color: #FF0000; /* Cambia el color a tu gusto */
+    color: #ffffff;
+    font-weight: bold;
+    z-index: 10000;
+    cursor: pointer;
+    /* writing-mode: vertical-rl;  Hace que el texto sea vertical 
+    text-orientation: upright; Asegura que las letras estén derechas 
+    padding: 10px; Ajusta según sea necesario  */
+}
+
+.close-btn:hover {
+    background-color: #ffffff;
+    color: #FF0000;
+    border: 2px solid #FF0000;
 }

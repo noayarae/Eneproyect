@@ -43,8 +43,9 @@ h5{
 .fixed-buttons {
     display: flex;
     justify-content: space-between; /* Distribuye los botones uniformemente */   
-    gap: 20px; /* Espacio entre los botones */
-    margin-top: 15px; /* Espacio superior */
+    gap: 60px; /* Espacio entre los botones */
+    margin: 5px 20px !important; /* Espacio superior */
+    
 }
 
 .fixed-buttons button {
@@ -82,11 +83,12 @@ h5{
 .table-responsive {
     text-align: left !important; /* Alinear texto a la izquierda */
     display: flex; /* Usar flexbox para más control */
-    background-color: #E0E0E0;
-    border: 1px solid #000000 !important; /* Borde negro de 1px */
+    background-color: #003366;
+    border: 1px solid #003366 !important; /* Borde negro de 1px */
+    padding-top: 3px;
     
 }
 
 .table-responsive, .table-responsive * {
-    color: #000000 !important;
+    color: #ffffff !important;
 }

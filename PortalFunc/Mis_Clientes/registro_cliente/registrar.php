@@ -219,6 +219,16 @@ $conn->close();
             text-align: center;
             font-weight: bold;
         }
+
+        /* Quitar flechas de los input type=number */
+        input[type=number]::-webkit-inner-spin-button,
+        input[type=number]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            appearance: textfield;
+        }
     </style>
 </head>
 
@@ -247,7 +257,7 @@ $conn->close();
                         </div>
                         <div class="col-md-4">
                             <label class="fw-bold">Teléfono</label>
-                            <input type="text" name="telefono" required class="form-control" placeholder="Teléfono">
+                            <input type="number" name="telefono" required class="form-control" placeholder="Teléfono">
                         </div>
                         <div class="col-md-4">
                             <label class="fw-bold">Fecha Nacimiento</label>
@@ -306,13 +316,17 @@ $conn->close();
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Estado</label>
-                            <input type="text" name="estado" required class="form-control" placeholder="Estado">
+                            <select name="estado" required class="form-control">
+                                <option value="" disabled selected>Estado</option>
+                                <option value="Vigente">Vigente</option>
+                                <option value="No vigente">No vigente</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <label class="fw-bold">Monto Créd.</label>
-                            <input type="number" step="0.01" name="monto" required class="form-control" placeholder="Monto Créd.">
+                            <input type="number" name="monto" required class="form-control" placeholder="Monto Créd.">
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Fecha Desemb.</label>
@@ -320,7 +334,7 @@ $conn->close();
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Saldo Créd.</label>
-                            <input type="number" step="0.01" name="saldo" required class="form-control" placeholder="Saldo Créd.">
+                            <input type="number" name="saldo" required class="form-control" placeholder="Saldo Créd.">
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Fec. Vencim.</label>

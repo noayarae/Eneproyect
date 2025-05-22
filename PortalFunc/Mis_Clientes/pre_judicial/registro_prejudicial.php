@@ -261,31 +261,31 @@ $conn->close();
                     <h5 class="titulo-informacion-cliente">Informacion Del cliente</h5>
                 </div>
                 <!-- Primera columna -->
-                <div class="col-md-3">
+                <div class="col">
                     <p><strong>Nombres:</strong> <?php echo htmlspecialchars(isset($cliente['nombre']) ? $cliente['nombre'] . ' ' . $cliente['apellidos'] : ''); ?></p>
                     <p><strong>DNI:</strong> <?php echo htmlspecialchars($cliente['dni'] ?? ''); ?></p>
                 </div>
 
                 <!-- Segunda columna -->
-                <div class="col-md-2">
+                <div class="col">
                     <p><strong>Agencia:</strong> <?php echo htmlspecialchars($cliente['agencia'] ?? ''); ?></p>
                     <p><strong>Tipo de Crédito:</strong> <?php echo htmlspecialchars($cliente['tipo_credito'] ?? ''); ?></p>
                 </div>
 
                 <!-- Tercera columna -->
-                <div class="col-md-3">
+                <div class="col">
                     <p><strong>Fecha Desembolso:</strong> <?php echo htmlspecialchars($fecha_desembolso_formateada); ?></p>
                     <p><strong>Fecha Vencimiento:</strong> <?php echo htmlspecialchars($fecha_vencimiento_formateada); ?></p>
                 </div>
 
                 <!-- Cuarta columna -->
-                <div class="col-md-2">
+                <div class="col">
                     <p><strong>Monto:</strong> <?php echo htmlspecialchars($monto_formateado); ?></p>
                     <p><strong>Plazo de Crédito (días):</strong> <?php echo htmlspecialchars($plazo_credito); ?></p>
                 </div>
 
                 <!-- Quinta columna -->
-                <div class="col-md-2">
+                <div class="col">
                     <p><strong>Monto Abonado:</strong> <?php echo htmlspecialchars($monto_abonado_formateado); ?></p>
                     <p><strong>Saldo:</strong> <?php echo htmlspecialchars($saldo_formateado); ?></p>
                 </div>
@@ -337,7 +337,7 @@ $conn->close();
                                     Monto Amortizado:
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="number" step="0.01" name="monto_amortizado" class="form-control">
+                                    <input type="number" name="monto_amortizado" class="form-control">
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">

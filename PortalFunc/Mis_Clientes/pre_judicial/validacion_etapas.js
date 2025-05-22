@@ -1,3 +1,19 @@
+document.querySelectorAll('input[type=number]').forEach(input => {
+  // Evitar que el scroll del mouse cambie el valor del input
+  input.addEventListener('wheel', function(e) {
+    if (document.activeElement === input) {
+      input.blur(); // quita el foco del input
+    }
+  });
+
+  // Bloquear teclas de flecha ↑ ↓ solo si el input está enfocado
+  input.addEventListener('keydown', function(e) {
+    if ((e.key === "ArrowUp" || e.key === "ArrowDown") && document.activeElement === input) {
+      e.preventDefault();
+    }
+  });
+});
+
 function validarFormularioPreJudicial() {
     // Obtener valores del formulario
     /* let fecha_acto = new Date(); */ // Obtener la fecha actual

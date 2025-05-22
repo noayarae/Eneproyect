@@ -11,6 +11,22 @@ function verificarDNI(dni) {
         });
 }
 
+document.querySelectorAll('input[type=number]').forEach(input => {
+  // Evitar que el scroll del mouse cambie el valor del input
+  input.addEventListener('wheel', function(e) {
+    if (document.activeElement === input) {
+      input.blur(); // quita el foco del input
+    }
+  });
+
+  // Bloquear teclas de flecha ↑ ↓ solo si el input está enfocado
+  input.addEventListener('keydown', function(e) {
+    if ((e.key === "ArrowUp" || e.key === "ArrowDown") && document.activeElement === input) {
+      e.preventDefault();
+    }
+  });
+});
+
 
 function validarFormulario() {
     // datos cliente
@@ -72,7 +88,7 @@ function validarFormulario() {
         alert("DNI del cliente inválido"); return false;
     }
     if (!regexTelefono.test(telefono)) {
-        alert("Teléfono del cliente inválido"); return false;
+        alert("Teléfono del cliente inválido solo se aseptan numeros de 0 al 9"); return false;
     }
     let fechaNa = new Date(fecha_nacimiento);
     let hoyy = new Date();
@@ -129,7 +145,7 @@ function validarFormulario() {
         alert("DNI del garante inválido"); return false;
     }
     if (telefono_garante && !regexTelefono.test(telefono_garante)) {
-        alert("Teléfono del garante inválido"); return false;
+        alert("Teléfono del garante inválido, solo se aseptan números de 0 al 9"); return false;
     }
 
     // Validación opcional para fecha de nacimiento
