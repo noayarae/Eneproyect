@@ -225,3 +225,13 @@ Stack trace:
 [17-May-2025 17:18:57 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
 [17-May-2025 17:18:57 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-17 17:18:57"}
 [17-May-2025 17:18:57 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*
+[22-May-2025 23:51:11 Europe/Berlin] [2025-05-22 23:51:11] === INICIO PROCESAR_LOGIN ===
+[22-May-2025 23:51:11 Europe/Berlin] Preparando consulta para usuario: Pablo1234*$
+[22-May-2025 23:51:11 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Pablo","apellido":"Perez Sanches","correo":"pablo15paredes@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Pablo1234*$","dni":"73784565","password":"$2y$10$q5gU\/Qo57RGLAUaw5KHRy.n.EJRbpIOjaedhYKEJPRxTkiz4Xp7.a","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[22-May-2025 23:51:11 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-22 23:51:11"}
+[22-May-2025 23:51:11 Europe/Berlin] Autenticación exitosa para: Pablo1234*$
+[22-May-2025 23:55:36 Europe/Berlin] [2025-05-22 23:55:36] === INICIO PROCESAR_LOGIN ===
+[22-May-2025 23:55:36 Europe/Berlin] Preparando consulta para usuario: Pablo1234*$
+[22-May-2025 23:55:36 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Pablo","apellido":"Perez Sanches","correo":"pablo15paredes@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Pablo1234*$","dni":"73784565","password":"$2y$10$q5gU\/Qo57RGLAUaw5KHRy.n.EJRbpIOjaedhYKEJPRxTkiz4Xp7.a","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[22-May-2025 23:55:36 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-22 23:55:36"}
+[22-May-2025 23:55:36 Europe/Berlin] Autenticación exitosa para: Pablo1234*$
