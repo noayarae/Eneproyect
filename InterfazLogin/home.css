@@ -1,0 +1,149 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    background: linear-gradient(135deg, #003366, #0056b3); /* Azul oscuro degradado */
+    color: white;
+    transition: 0.4s;
+}
+
+/* ----- BARRA LATERAL (FIJA) ----- */
+.sidebar {
+    position: fixed; /* Fija en la pantalla */
+    left: 0;
+    top: 0;
+    width: 270px;
+    height: 100vh;
+    background: linear-gradient(135deg, #1c1c1c, #3a3a3a);
+    padding-top: 20px;
+    box-shadow: 4px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilo del título */
+.sidebar h2 {
+    font-size: 22px;
+    text-align: center;
+    color: #FFD700; /* Dorado */
+    margin-bottom: 15px;
+}
+
+/* Lista de enlaces */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar li {
+    margin: 12px 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    display: block;
+    padding: 12px;
+    text-align: center;
+    background: linear-gradient(135deg, #444, #666);
+    border-left: 4px solid #FFD700;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.sidebar a:hover {
+    background: linear-gradient(135deg, #FFD700, #b8860b);
+    color: #333;
+    font-weight: bold;
+}
+
+/* ----- CONTENIDO PRINCIPAL ----- */
+.content {
+    flex: 1;
+    padding: 40px;
+    width: calc(100% - 270px); /* Ajuste para que no tape la barra */
+    margin-left: 270px; /* Espacio para la barra lateral */
+    text-align: center;
+    transition: margin-left 0.4s ease-in-out;
+}
+
+/* ----- SECCIÓN DE BIENVENIDA ----- */
+.content h1 {
+    font-size: 34px;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.content p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+/* ----- CUADRO DE UBICACIÓN ----- */
+.map-preview {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 85%;
+    margin: auto;
+    border: 2px solid #FFD700;
+    box-shadow: 0px 4px 10px rgba(255, 215, 0, 0.5);
+}
+
+.map-preview h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #FFD700;
+}
+
+.map-preview img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 10px;
+    border: 2px solid white;
+}
+
+/* ----- ESTADO DE CITAS ----- */
+.status {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    width: 85%;
+    margin: auto;
+    border: 2px solid #FFD700;
+}
+
+.status h2 {
+    font-size: 24px;
+    color: #FFD700;
+}
+
+.status ul {
+    list-style: none;
+    padding: 0;
+}
+
+.status li {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+/* RESPONSIVE: Para pantallas pequeñas */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 220px;
+    }
+    
+    .content {
+        width: calc(100% - 220px);
+        margin-left: 220px;
+    }
+}

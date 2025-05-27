@@ -1,0 +1,94 @@
+body {
+    background: #3385ff;
+    margin-bottom: 20px;
+}
+h5{
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    color: #ffffff;
+}
+* {
+    font-size: 10px !important;
+}
+.titulo-principal {
+    background-color: #003366;
+    margin: 5px;
+    padding: 3px;
+}
+
+.titulo-cliente {
+    background-color: #808080; /* Fondo*/
+    color: #ffffff; /* Color del texto blanco*/
+    border: 1px solid #000000 !important; /* Borde negro de 1px */
+    border-bottom: 0px  solid  !important;
+    padding: 1px !important; /* Mantener el relleno existente */
+    text-align: left !important; /* Alinear texto a la izquierda */
+    display: flex; /* Usar flexbox para más control */
+}
+.table-fixed tbody tr td:first-child,
+.table-fixed-judicial tbody tr td:first-child {
+    font-weight: bold;
+}
+.client-info{
+    background-color: #E0E0E0;
+    border: 1px solid #000000 !important; /* Borde negro de 1px */
+}
+
+.historial{
+    background-color: #3385ff;
+    border: none !important;
+}
+
+.fixed-buttons {
+    display: flex;
+    justify-content: space-between; /* Distribuye los botones uniformemente */   
+    gap: 60px; /* Espacio entre los botones */
+    margin: 5px 20px !important; /* Espacio superior */
+    
+}
+
+.fixed-buttons button {
+    flex: 1; /* Cada botón ocupa el mismo espacio */
+    padding: 3px; /* Padding uniforme */
+    font-size: 10px !important; /* Tamaño de fuente consistente */
+    text-align: center; /* Centra el texto */
+    padding: 3px; /* definir la altura */
+    font-weight: bold; /* en negrita */
+    background-color: #003366; /* Color de fondo azul por defecto */
+    color: #ffffff; /* Color del texto blanco */
+    border: none; /* Elimina el borde por defecto */
+    transition: background-color 0.3s ease; /* Suaviza la transición del color */
+}
+
+.fixed-buttons button:hover {
+    background-color: #FFD700 ; /* Color amarillo al pasar el mouse */
+    color: #000000; /* Mantiene el color del texto blanco */
+    font-weight: bold; /* en negrita */
+}
+
+/* Aplica a todas las celdas de la tabla */
+.table-bordered th,
+.table-bordered td,
+.table-bordered {
+    border: 1px solid #000000 !important; /* Borde rojo */
+}
+
+/* Opcional: para forzar también en el contorno de toda la tabla */
+.table {
+    border-color: #000000 !important;
+}
+
+/* titulo de historial de pre-judicial y judicial */
+.table-responsive {
+    text-align: left !important; /* Alinear texto a la izquierda */
+    display: flex; /* Usar flexbox para más control */
+    background-color: #003366;
+    border: 1px solid #003366 !important; /* Borde negro de 1px */
+    padding-top: 3px;
+    
+}
+
+.table-responsive, .table-responsive * {
+    color: #ffffff !important;
+}

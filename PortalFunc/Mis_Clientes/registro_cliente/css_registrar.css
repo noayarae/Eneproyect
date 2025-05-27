@@ -1,0 +1,142 @@
+.form-container {
+    flex: 1;
+    /* Ocupa el espacio restante en el contenedor vertical */
+    height: 517px;
+    /* Altura fija para el contenedor del formulario */
+    overflow-y: auto;
+    /* Solo scroll vertical */
+    overflow-x: hidden;
+    /* Oculta scroll horizontal */
+    /* Habilitar desplazamiento vertical */
+    padding-right: 2px;
+    /* Espacio para la barra de desplazamiento */
+    background-color: #E0E0E0;
+}
+
+.fixed-buttonss {
+    background-color: #E0E0E0 !important;
+    position: absolute;
+    /* Cambiar a absolute */
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+    padding: 5px;
+    justify-content: center;
+    width: 100%;
+    /* Centra los botones horizontalmente */
+    gap: 10px;
+    /* Espacio entre los botones */
+    padding: 0;
+    justify-content: space-around;
+    /* Centra los botones horizontalmente */
+    margin-top: 0px;
+    /* Añade espacio entre los botones y el contenido */
+    display: flex;
+    justify-content: space-between;
+    /* Distribuye los botones uniformemente */
+}
+
+.fixed-buttonss button {
+    padding: 3px;
+    font-size: 10px;
+    /* Ajusta el tamaño de la fuente si es necesario */
+    border: none;
+    cursor: pointer;
+    background-color: #0056b3;
+    transition: background-color 0.3s;
+    /* Transición suave */
+    font-weight: bold;
+    /* Texto en negrita */
+    flex: 1;
+    /* Cada botón ocupa el mismo espacio */
+}
+
+.fixed-buttonss button:hover {
+    font-weight: bold;
+    /* Texto en negrita */
+    background-color: #000000;
+    /* Color azul al pasar el mouse */
+    color: #ffffff;
+    /* Cambia el color del texto si lo deseas */
+}
+
+/* Estilo para los campos de entrada */
+.form-control {
+    height: 20px;
+    /* Altura fija para los campos de entrada */
+    width: 100%;
+    /* Ancho completo */
+    box-sizing: border-box;
+    /* Incluye el padding y el borde en el ancho y alto */
+    padding: 0;
+    /* Elimina el padding interno */
+    margin: 0;
+    /* Elimina el margen externo */
+    border-radius: 0;
+    /* Elimina los bordes redondeados */
+    border: 1px solid #ccc;
+    /* Añade un borde cuadrado */
+}
+
+.titulo-seccion {
+    background-color: #003366;
+    /* Puedes cambiarlo al color que desees */
+    border-radius: 0px;
+    padding: 0px;
+    margin-bottom: 0px;
+    color: #ffffff;
+}
+
+.titulo-seccion h5 {
+    margin: 0;
+    padding: 3px;
+    /* Puedes poner 0 si no quieres nada de espacio interno */
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Quitar flechas de los input type=number */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    appearance: textfield;
+}
+
+.justify-content-end {
+    gap: 10px;
+}
+
+.btn-primarya {
+    background-color: #6c757d;
+    color: white;
+    width: 100%;
+    font-size: 10px;
+    height: 20px;
+    padding: 4px 4px;
+    border: none;
+    border-radius: 0px;
+}
+
+.btn-danger {
+    background-color: #0dcaf0;
+    color: white;
+    width: 100%;
+    font-size: 10px;
+    height: 20px;
+    padding: 4px 4px;
+    border: none;
+    border-radius: 0px;
+}
+
+.btn-primarya:hover {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.btn-danger:hover {
+    background-color: #5a6268;
+}

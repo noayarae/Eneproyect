@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" 
+          integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="registro.css">
+    
+    <title>Registro</title>
+    <style>
+        .instrucciones-usuario, 
+        .instrucciones-password {
+            font-size: 0.8rem;
+            color: blue;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .instrucciones-usuario i, 
+        .instrucciones-password i {
+            color: rgb(77, 123, 252);
+        }
+        
+        .swal2-loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="register-container">
+            <div class="register">
+                <div class="header">
+                    <h2>Registrarse</h2>
+                </div>
+                <form id="registroForm" onsubmit="return false;">
+                    <input type="text" name="nombre" placeholder="Nombre" class="nombre" required>
+                    <input type="text" name="apellido" placeholder="Apellido" class="apellido" required>
+                    <input type="text" name="dni" placeholder="DNI" class="DNI" required> 
+                    <input type="email" name="correo" placeholder="Correo" class="correo" required>
+
+                    <div class="instrucciones-usuario">
+                        <i class="fas fa-info-circle"></i> Use letras, números o símbolos (#$). Sin límite de longitud
+                    </div>
+                    <input type="text" name="usuario" placeholder="Usuario" class="usuario" required>
+                    
+                    <div class="password-container">
+                        <input type="password" id="password" name="pass" placeholder="Contraseña" required>                              
+                        <i class="fas fa-eye-slash toggle-password" style="cursor: pointer;"></i>
+                    </div>
+                    
+                    <div class="password-container">
+                        <input type="password" id="confirmPassword" name="repass" placeholder="Confirmar Contraseña" required>
+                        <i class="fas fa-eye-slash toggle-password" style="cursor: pointer;"></i>
+                    </div>
+
+                    <div class="instrucciones-password">
+                        <i class="fas fa-info-circle"></i> Mínimo 10 caracteres con mayúsculas, minúsculas, números y un símbolo (#$). Ej.: Pa$$w0rd2024
+                    </div>
+
+                    <div class="container-btn">
+                        <button type="submit" class="btn btn-success">REGISTRARSE</button>
+                        <button type="button" class="btn btn-danger" id="btn_eliminar">LIMPIAR</button>
+                        <button type="button" class="btn btn-primary" id="btn_volver" onclick="window.location.href='https://eneproyect.com/intranet-eneproyect/'">VOLVER</button>                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función segura para decodificar parámetros URL
+        const safeDecodeURI = (value) => {
+            try {
+                return decodeURIComponent(value);
+            } catch (e) {
+                return value;
+            }
+        };
+
+        // Recuperar valores mantenidos después de error
+        $(document).ready(function(){
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            if (urlParams.has('nombre')) {
+                $("input[name='nombre']").val(safeDecodeURI(urlParams.get('nombre')));
+            }
+            if (urlParams.has('apellido')) {
+                $("input[name='apellido']").val(safeDecodeURI(urlParams.get('apellido')));
+            }
+            if (urlParams.has('dni')) {
+                $("input[name='dni']").val(safeDecodeURI(urlParams.get('dni')));
+            }
+            if (urlParams.has('correo')) {
+                $("input[name='correo']").val(safeDecodeURI(urlParams.get('correo')));
+            }
+            if (urlParams.has('usuario')) {
+                $("input[name='usuario']").val(safeDecodeURI(urlParams.get('usuario')));
+            }
+        });
+    </script>
+
+    <script src="registro.js"></script>
+</body>
+</html>

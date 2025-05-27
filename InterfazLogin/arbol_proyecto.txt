@@ -1,0 +1,43 @@
+├───InterfazLogin
+│   │   conexion.php
+│   │   home.php
+│   │   home.css
+│   │   home.js
+│   │
+│   ├───FuncionLogin
+│   │   │   alertas.js
+│   │   │   enviarCorreo.php
+│   │   │   login.html
+│   │   │   login.js
+│   │   │   login_style.css
+│   │   │   mensaje.php
+│   │   │   procesar_login.php
+│   │   │   ValidaYDirec.php
+│   │   │   llenar_datos.html
+│   │   │   llenar_datos.js
+│   │   │   llenar_datos.php
+│   │   │   logout.php
+│   │   │   validar_acceso.php
+│   │   │
+│   │   ├───RestablecerContra
+│   │   │       funciones.php
+│   │   │       procesar_reset_password.css
+│   │   │       procesar_reset_password.html
+│   │   │       procesar_reset_password.php
+│   │   │       obtener_nombre.php
+│   │   │       procesar_reset_password.js
+│   │   ├───Vendor
+│   │
+│   ├───FuncionRegistro
+│   │   │   procesar_registro.php
+│   │   │   registro.html
+│   │   │   registro.js
+│   │   │   registro_style.css
+│   │   │───ConfirmaRRHH
+│   │   │   │   vendor
+│   │   │   │   solicitud.css
+│   │   │   │   solicitud.php
+│   │   │   │   procesar_solicitud.php 
+│   │   │   │   enviarCorreoValidacion.php
+│   |   composer.json
+│   |   composer.lock

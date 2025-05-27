@@ -1,0 +1,219 @@
+.preview-container {
+    z-index: 9999; /* <-- Asegúrate de que sea más alto que los th fijos */
+}
+.table-fixed-judicial th:first-child,
+.table-fixed th:first-child {
+    position: -webkit-sticky; /* Para Safari */
+    position: sticky;
+    left: 0;
+    top: 0; /* Fija la posición en la parte superior */
+    background-color: #808080;
+    z-index: 5; /* MÁS ALTO que otros encabezados */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-fixed-judicial td:first-child,
+.table-fixed td:first-child { 
+    position: -webkit-sticky; /* Para Safari */
+    position: sticky;
+    left: 0;
+    background-color: #808080;
+    z-index: 4; /* MÁS ALTO que otros td, pero MENOR que el th */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.table-fixed-judicial,
+.table-fixed {
+    table-layout: auto; /* Importante para que los anchos personalizados funcionen */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-fixed-judicial,
+.table-fixed {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto; /* permite que las columnas se ajusten solas */
+}
+
+/* desde aqui para las tablas */
+.table-fixed-judicial th,
+.table-fixed th {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: #808080;
+    z-index: 3; /* Debajo del encabezado de "N°" */
+    text-align: left;
+    vertical-align: top;
+    padding: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.table-fixed-judicial td,
+.table-fixed td {
+    text-align: left;
+    vertical-align: top;
+    padding: 8px;
+    white-space: normal;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    border: 1px solid #ddd;
+    z-index: 0; /* por debajo de todo */
+}
+
+.table-fixed th:nth-child(3),/* Acto */
+.table-fixed td:nth-child(3){
+    width: 600px;
+    min-width: 80px;
+    max-width: 150px;
+}
+.table-fixed th:nth-child(4),/* N° de Notif. Voucher */
+.table-fixed td:nth-child(4){
+    width: 600px;
+    min-width: 80px;
+    max-width: 150px;
+}
+
+.table-fixed th:nth-child(5),/* Descripción */
+.table-fixed td:nth-child(5) {
+    width: 320px;
+    min-width: 400px;
+    max-width: 400px;
+}
+
+.table-fixed th:nth-child(6),/* Notificación */
+.table-fixed td:nth-child(6) {
+    width: 320px;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+.table-fixed th:nth-child(7),/* Evidencia 1 */
+.table-fixed td:nth-child(7),
+.table-fixed th:nth-child(8),/* Evidencia 2 */
+.table-fixed td:nth-child(8) {
+    width: 320px;
+    min-width: 300px;
+    max-width: 300px;
+}
+.table-fixed th:nth-child(9),/* Fecha Clave */
+.table-fixed td:nth-child(9) {
+    width: 320px;
+    min-width: 115px;
+    max-width: 115px;
+}
+.table-fixed th:nth-child(10),/* Acción en Fecha Clave */
+.table-fixed td:nth-child(10) {
+    width: 320px;
+    min-width: 200px;
+    max-width: 50px;
+}
+.table-fixed th:nth-child(11),/* Actor */
+.table-fixed td:nth-child(11) {
+    width: 320px;
+    min-width: 80px;
+    max-width: 200px;
+}
+
+/* PARA LA TABLA DE JUDICIAL */
+.table-fixed-judicial th:nth-child(3),/* fecha judicial */
+.table-fixed-judicial td:nth-child(3){
+    width: 220px;
+    min-width: 115px;
+    max-width: 115px;
+}
+.table-fixed-judicial th:nth-child(4),/* acto  -judicial */
+.table-fixed-judicial td:nth-child(4){
+    width: 220px;
+    min-width: 150px;
+    max-width: 150px;
+}
+.table-fixed-judicial th:nth-child(6),/* N° Expediente  -judicial */
+.table-fixed-judicial td:nth-child(6){
+    width: 220px;
+    min-width: 110px;
+    max-width: 110px;
+}
+.table-fixed-judicial th:nth-child(8),/* Descripcion judicial*/
+.table-fixed-judicial td:nth-child(8){
+    width: 320px;
+    min-width: 400px;
+    max-width: 400px;
+}
+.table-fixed-judicial th:nth-child(9),/* Doc evidencia judicial*/
+.table-fixed-judicial td:nth-child(9){
+    width: 320px;
+    min-width: 300px;
+    max-width: 300px;
+}
+.table-fixed-judicial th:nth-child(12),/* actor judicial*/
+.table-fixed-judicial td:nth-child(12){
+    width: 220px;
+    min-width: 80px;
+    max-width: 100px;
+}
+/* asta aqui */
+
+/* Asegura que los botones se mantengan en una sola línea y se distribuyan correctamente */
+.fixed-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+/* Para calular el tamaño de los historiales pre-judicial y judicial */
+.scrollable-table-container {
+    max-height: 400px; /* Ajusta la altura máxima según tus necesidades */
+    overflow-y: auto;
+    margin-bottom: 20px; /* Espacio entre las tablas */
+}
+
+/* Asegura que el contenedor de vista previa ocupe el 40% del ancho de la pantalla y sea scrollable verticalmente */
+.preview-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 40%;
+    background-color: #003366;
+    box-shadow: -3px 0 5px #000000;
+    overflow-y: auto;
+    display: none;
+    padding: 10px;
+}
+
+/* Asegura que el iframe dentro del contenedor de vista previa ocupe todo el espacio disponible */
+.preview-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview-container img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* para boton de la vista previa */
+.close-btn {
+    background-color: #FF0000; /* Cambia el color a tu gusto */
+    color: #ffffff;
+    font-weight: bold;
+    z-index: 10000;
+    cursor: pointer;
+    /* writing-mode: vertical-rl;  Hace que el texto sea vertical 
+    text-orientation: upright; Asegura que las letras estén derechas 
+    padding: 10px; Ajusta según sea necesario  */
+}
+
+.close-btn:hover {
+    background-color: #ffffff;
+    color: #FF0000;
+    border: 2px solid #FF0000;
+}
