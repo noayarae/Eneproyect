@@ -9,6 +9,7 @@ if (
     !isset($_SESSION['nombre_completo'])
 ) {
     header("Location: https://eneproyect.com");
+
     exit();
 }
 //llamar a las variables de sesion

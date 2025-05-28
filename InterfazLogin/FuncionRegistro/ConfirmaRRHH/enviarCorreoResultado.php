@@ -1,8 +1,7 @@
 <?php
 function enviarCorreoResultado($nombre, $apellido, $correo, $estado, $comentarios = '') {
     // Cargar autoload de SendGrid (ajusta la ruta según tu estructura local)
-    require 'vendor/autoload.php';
-
+    require_once __DIR__ . '/../../vendor/autoload.php';
     // Obtener API Key de variable de entorno local
 
     $sendgridApiKey = getenv("SENDGRID_API_KEY");

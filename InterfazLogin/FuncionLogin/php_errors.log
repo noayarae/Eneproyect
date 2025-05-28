@@ -1,0 +1,5 @@
+[28-May-2025 05:29:19 Europe/Berlin] [2025-05-28 05:29:19] === INICIO PROCESAR_LOGIN ===
+[28-May-2025 05:29:19 Europe/Berlin] Preparando consulta para usuario: NoahWASD123&&
+[28-May-2025 05:29:20 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Lopez","apellido":"Castro","correo":"sebastiannoacjt@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"NoahWASD123&&","dni":"75572539","password":"$2y$10$ZaBGjits\/3k3QCwji5O0hOp6ls8Oi3OPCCwoovzVAM01Mi\/SqdCau","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[28-May-2025 05:29:20 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-28 05:29:20"}
+[28-May-2025 05:29:20 Europe/Berlin] Autenticación exitosa para: NoahWASD123&&
