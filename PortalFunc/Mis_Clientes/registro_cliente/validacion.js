@@ -12,19 +12,19 @@ function verificarDNI(dni) {
 }
 
 document.querySelectorAll('input[type=number]').forEach(input => {
-  // Evitar que el scroll del mouse cambie el valor del input
-  input.addEventListener('wheel', function(e) {
-    if (document.activeElement === input) {
-      input.blur(); // quita el foco del input
-    }
-  });
+    // Evitar que el scroll del mouse cambie el valor del input
+    input.addEventListener('wheel', function (e) {
+        if (document.activeElement === input) {
+            input.blur(); // quita el foco del input
+        }
+    });
 
-  // Bloquear teclas de flecha ↑ ↓ solo si el input está enfocado
-  input.addEventListener('keydown', function(e) {
-    if ((e.key === "ArrowUp" || e.key === "ArrowDown") && document.activeElement === input) {
-      e.preventDefault();
-    }
-  });
+    // Bloquear teclas de flecha ↑ ↓ solo si el input está enfocado
+    input.addEventListener('keydown', function (e) {
+        if ((e.key === "ArrowUp" || e.key === "ArrowDown") && document.activeElement === input) {
+            e.preventDefault();
+        }
+    });
 });
 
 
@@ -84,7 +84,7 @@ function validarFormulario() {
     let referencia2_garante_3 = document.forms["registroForm"]["referencia2_garante_3"].value;
     let ocupacion_garante_3 = document.forms["registroForm"]["ocupacion_garante_3"].value;
     let clasificacion_riesgo_garante_3 = document.forms["registroForm"]["clasificacion_riesgo_garante_3"].value;
-    
+
     // Fecha Programada
     let fecha_clave = document.forms["registroForm"]["fecha_clave"].value;
     let accion_fecha_clave = document.forms["registroForm"]["accion_fecha_clave"].value;
@@ -371,6 +371,82 @@ function cancelarGarante(numero) {
     }
 }
 
+/* de aqui para departamento provincia  */
+let dataCCPP = [];
+
+fetch('ubigeo/ubigeo_ccpp.json')
+  .then(res => res.json())
+  .then(data => {
+    dataCCPP = data;
+    cargarDepartamentos();
+  })
+  .catch(err => console.error('Error cargando los datos:', err));
+
+
+function capitalizarPalabra(texto) {
+  return texto.toLowerCase().replace(/\b\w/g, letra => letra.toUpperCase());
+}
+
+function cargarDepartamentos() {
+  const departamentoSelect = document.getElementById('departamento');
+  const departamentos = [...new Set(dataCCPP.map(item => item.departamento))];
+  
+  departamentos.sort().forEach(dep => {
+    const option = document.createElement('option');
+    option.value = dep;
+    option.textContent = capitalizarPalabra(dep); // se muestra con capitalización
+    departamentoSelect.appendChild(option);
+  });
+
+  departamentoSelect.disabled = false;
+}
+
+document.getElementById('departamento').addEventListener('change', function () {
+  const provinciaSelect = document.getElementById('provincia');
+  const distritoSelect = document.getElementById('distrito');
+
+  provinciaSelect.innerHTML = '<option value="">Seleccione provincia</option>';
+  distritoSelect.innerHTML = '<option value="">Seleccione distrito</option>';
+
+  const selectedDep = this.value;
+  const provincias = [...new Set(dataCCPP
+    .filter(item => item.departamento === selectedDep)
+    .map(item => item.provincia))];
+
+  provincias.sort().forEach(prov => {
+    const option = document.createElement('option');
+    option.value = prov;
+    option.textContent = capitalizarPalabra(prov);
+    provinciaSelect.appendChild(option);
+  });
+
+  provinciaSelect.disabled = false;
+  distritoSelect.disabled = true;
+});
+
+document.getElementById('provincia').addEventListener('change', function () {
+  const distritoSelect = document.getElementById('distrito');
+
+  distritoSelect.innerHTML = '<option value="">Seleccione distrito</option>';
+
+  const dep = document.getElementById('departamento').value;
+  const prov = this.value;
+
+  const distritos = [...new Set(dataCCPP
+    .filter(item => item.departamento === dep && item.provincia === prov)
+    .map(item => item.distrito))];
+
+  distritos.sort().forEach(dist => {
+    const option = document.createElement('option');
+    option.value = dist;
+    option.textContent = capitalizarPalabra(dist);
+    distritoSelect.appendChild(option);
+  });
+
+  distritoSelect.disabled = false;
+});
+
+/* esta parte ultimo */
 function cerrarRegistro() {
     document.getElementById('registroCliente').style.display = 'none';
     document.getElementById('registroContent').innerHTML = '';

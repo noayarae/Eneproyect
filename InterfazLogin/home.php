@@ -58,7 +58,7 @@ $nombre_completo = $_SESSION['nombre_completo'];
         </header>
 
         <!-- Secciones de contenido -->
-        <section class="dashboard">
+        <!-- <section class="dashboard">
             <div class="card">
                 <h3><i class="fas fa-folder"></i> Clientes atendidos</h3>
                 <p>5 hoy</p>
@@ -71,7 +71,7 @@ $nombre_completo = $_SESSION['nombre_completo'];
                 <h3><i class="fas fa-map-marker-alt"></i> Clientes en espera</h3>
                 <p>3 por visitar</p>
             </div>
-        </section>
+        </section> -->
 
         <!-- Vista previa del mapa -->
         <section class="map-preview">

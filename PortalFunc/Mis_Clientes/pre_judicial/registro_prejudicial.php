@@ -443,7 +443,7 @@ $conn->close();
                         <button type="submit" class="btn btn-primary mt-3">Registrar</button>
                         <button type="reset" class="btn btn-secondary mt-3">Limpiar</button>
                         <button type="button" class="btn btn-info mt-3" onclick="verHistorial(<?php echo htmlspecialchars($id_cliente); ?>)">Ver Historial</button>
-                        <button type="button" class="btn btn-success mt-3" onclick="history.back()">Regresar</button>
+                        <!-- <button type="button" class="btn btn-success mt-3" onclick="history.back()">Regresar</button> -->
                         <button type="button" class="btn btn-danger mt-3" onclick="window.location.href='../registro_cliente/index.php'">Salir</button>
                     </div>
                 </form>
@@ -561,7 +561,7 @@ $conn->close();
                         <button type="submit" class="btn btn-primary mt-3">Registrar</button>
                         <button type="reset" class="btn btn-secondary mt-3">Limpiar</button>
                         <button type="button" class="btn btn-info mt-3" onclick="verHistorial(<?php echo htmlspecialchars($id_cliente); ?>)">Ver Historial</button>
-                        <button type="button" class="btn btn-success mt-3" onclick="history.back()">Regresar</button>
+                        <!-- <button type="button" class="btn btn-success mt-3" onclick="history.back()">Regresar</button> -->
                         <button type="button" class="btn btn-danger mt-3" onclick="window.location.href='../registro_cliente/index.php'">Salir</button>
                     </div>
                 </form>

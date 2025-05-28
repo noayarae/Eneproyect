@@ -23,6 +23,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $ocupacion = $_POST["ocupacion"];
     $clasificacion_riesgo = $_POST["clasificacion_riesgo"];
     $agencia = $_POST["agencia"]; //nuevo
+    // nuego de departamento provincia y distrito
+    $departamento = $_POST["departamento"];
+    $provincia = $_POST["provincia"];
+    $distrito = $_POST["distrito"];
+
     $tipo_credito = $_POST["tipo_credito"]; //nuevo
     $estado = $_POST["estado"]; //nuevo
     $fecha_desembolso = $_POST["fecha_desembolso"];
@@ -94,6 +99,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     nombre, apellidos, dni, telefono, fecha_nacimiento, domicilio1, referencia1, domicilio2, referencia2,
     ocupacion, clasificacion_riesgo, agencia, tipo_credito, estado, fecha_desembolso, fecha_vencimiento,
     monto, saldo,
+    departamento, provincia, distrito, 
     nombre_garante, apellidos_garante, dni_garante, telefono_garante, fecha_nacimiento_garante,
     domicilio1_garante, referencia1_garante, domicilio2_garante, referencia2_garante,
     ocupacion_garante, clasificacion_riesgo_garante,
@@ -108,6 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     '$nombre', '$apellidos', '$dni', '$telefono', '$fecha_nacimiento', '$domicilio1', '$referencia1', '$domicilio2', '$referencia2',
     '$ocupacion', '$clasificacion_riesgo', '$agencia', '$tipo_credito', '$estado', '$fecha_desembolso', '$fecha_vencimiento',
     '$monto', '$saldo',
+    '$departamento', '$provincia', '$distrito',
     '$nombre_garante', '$apellidos_garante', '$dni_garante', '$telefono_garante', '$fecha_nacimiento_garante',
     '$domicilio1_garante', '$referencia1_garante', '$domicilio2_garante', '$referencia2_garante',
     '$ocupacion_garante', '$clasificacion_riesgo_garante',
@@ -231,6 +238,7 @@ $conn->close();
                         <input type="text" name="referencia2" class="form-control" placeholder="Referencia 2">
                     </div>
                     <div class="row mb-2">
+                        <!-- Agencia -->
                         <div class="col-md-3">
                             <label class="fw-bold">Agencia</label>
                             <select name="agencia" required class="form-control">
@@ -240,7 +248,30 @@ $conn->close();
                                 <option value="Lima">Lima</option>
                             </select>
                         </div>
+                        <!-- Departamento -->
                         <div class="col-md-3">
+                            <label class="fw-bold">Departamento</label>
+                            <select id="departamento" name="departamento" class="form-control" required>
+                                <option value="" disabled selected>Seleccione un departamento</option>
+                            </select>
+                        </div>
+                        <!-- Provincia -->
+                        <div class="col-md-3">
+                            <label class="fw-bold">Provincia</label>
+                            <select id="provincia" name="provincia" class="form-control" required disabled>
+                                <option value="" disabled selected>Seleccione una provincia</option>
+                            </select>
+                        </div>
+                        <!-- Distrito -->
+                        <div class="col-md-3">
+                            <label class="fw-bold">Distrito</label>
+                            <select id="distrito" name="distrito" class="form-control" required disabled>
+                                <option value="" disabled selected>Seleccione un distrito</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-4">
                             <label class="fw-bold">Tipo Crédito</label>
                             <select name="tipo_credito" required class="form-control">
                                 <option value="" disabled selected>Seleccione una opción</option>
@@ -250,7 +281,7 @@ $conn->close();
                                 <option value="Anual">Anual</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label class="fw-bold">Clas. Riesgo</label>
                             <select name="clasificacion_riesgo" required class="form-control">
                                 <option value="" disabled selected>Seleccione una opción</option>
@@ -260,7 +291,7 @@ $conn->close();
                                 <option value="PER">PER</option>
                             </select>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-4">
                             <label class="fw-bold">Estado</label>
                             <select name="estado" required class="form-control">
                                 <option value="" disabled selected>Estado</option>
@@ -530,6 +561,8 @@ $conn->close();
             </div>
         </form>
     </div>
+    <script src="ubigeo/ubigeo_ccpp.json"></script>
+    <script src="ubigeos_peru/js/ubigeo.js"></script>
     <script src="../../inactividad.js"></script>
 </body>
 

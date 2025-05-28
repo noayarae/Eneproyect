@@ -223,7 +223,7 @@ $conn->close();
 
     <div class="fixed-buttons mt-2 p-1">
         <button type="button" class="btn btn-primary" onclick="agregarHistoria()">Agregar Historia</button>
-        <button type="button" class="btn btn-secondary" onclick="history.back()">Regresar</button>
+        <!-- <button type="button" class="btn btn-secondary" onclick="history.back()">Regresar</button> -->
         <button type="button" class="btn btn-danger" onclick="window.location.href='../registro_cliente/index.php'">Salir</button>
     </div>
 
