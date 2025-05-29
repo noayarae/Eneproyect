@@ -321,33 +321,42 @@ function validarFormulario() {
 }
 function mostrarGarante(numero) {
     const divActual = document.getElementById("garante" + numero);
-    const divAnterior = document.getElementById("garante" + (numero - 1));
+    const divAnterior = numero > 1 ? document.getElementById("garante" + (numero - 1)) : null;
 
     if (divActual) {
         divActual.style.display = "block";
     }
 
-    // Ocultar el botón "Agregar otro garante" del garante anterior
-    const botonAgregarAnterior = divAnterior?.querySelector(".btn.btn-primarya");
-    if (botonAgregarAnterior) {
-        botonAgregarAnterior.style.display = "none";
+    // Si estamos mostrando el primer garante, ocultamos el botón inicial
+    if (numero === 1) {
+        const botonInicial = document.getElementById("boton-agregar-garante1");
+        if (botonInicial) {
+            botonInicial.style.display = "none";
+        }
     }
 
-    // Ocultar el botón "Cancelar aval" del garante anterior
-    const botonCancelarAnterior = divAnterior?.querySelector(".btn.btn-danger");
-    if (botonCancelarAnterior) {
-        botonCancelarAnterior.style.display = "none";
+    // Ocultar botones del garante anterior (si existe)
+    if (divAnterior) {
+        const botonAgregarAnterior = divAnterior.querySelector(".btn.btn-primarya");
+        if (botonAgregarAnterior) {
+            botonAgregarAnterior.style.display = "none";
+        }
+
+        const botonCancelarAnterior = divAnterior.querySelector(".btn.btn-danger");
+        if (botonCancelarAnterior) {
+            botonCancelarAnterior.style.display = "none";
+        }
     }
 }
 
 function cancelarGarante(numero) {
     const divActual = document.getElementById("garante" + numero);
-    const divAnterior = document.getElementById("garante" + (numero - 1));
+    const divAnterior = numero > 1 ? document.getElementById("garante" + (numero - 1)) : null;
 
     if (divActual) {
         divActual.style.display = "none";
 
-        // Limpiar los campos del garante cancelado (opcional)
+        // Limpiar los campos del garante cancelado
         const inputs = divActual.querySelectorAll("input, select");
         inputs.forEach(input => {
             if (input.tagName === "SELECT") {
@@ -358,18 +367,28 @@ function cancelarGarante(numero) {
         });
     }
 
-    // Mostrar el botón "Agregar otro garante" del garante anterior
-    const botonAgregarAnterior = divAnterior?.querySelector(".btn.btn-primarya");
-    if (botonAgregarAnterior) {
-        botonAgregarAnterior.style.display = "inline-block";
+    // Si estamos cancelando el primer garante, volver a mostrar el botón inicial
+    if (numero === 1) {
+        const botonInicial = document.getElementById("boton-agregar-garante1");
+        if (botonInicial) {
+            botonInicial.style.display = "block";
+        }
     }
 
-    // Mostrar el botón "Cancelar aval" del garante anterior
-    const botonCancelarAnterior = divAnterior?.querySelector(".btn.btn-danger");
-    if (botonCancelarAnterior) {
-        botonCancelarAnterior.style.display = "inline-block";
+    // Mostrar botones del garante anterior (si existe)
+    if (divAnterior) {
+        const botonAgregarAnterior = divAnterior.querySelector(".btn.btn-primarya");
+        if (botonAgregarAnterior) {
+            botonAgregarAnterior.style.display = "inline-block";
+        }
+
+        const botonCancelarAnterior = divAnterior.querySelector(".btn.btn-danger");
+        if (botonCancelarAnterior) {
+            botonCancelarAnterior.style.display = "inline-block";
+        }
     }
 }
+
 
 /* de aqui para departamento provincia  */
 let dataCCPP = [];

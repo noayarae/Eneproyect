@@ -8,7 +8,10 @@ function formatNumber($number) {
 }
 // Función para formatear fechas al formato d-m-Y
 function formatDate($date) {
-    return date('d-m-Y', strtotime($date));
+    if (empty($date) || $date == '0000-00-00') {
+        return '';
+    }
+    return date('d/m/Y', strtotime($date));
 }
 
 // Obtener DNI desde la URL

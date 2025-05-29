@@ -21,12 +21,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $domicilio2 = isset($_POST["domicilio2"]) ? $_POST["domicilio2"] : '';
     $referencia2 = isset($_POST["referencia2"]) ? $_POST["referencia2"] : '';
     $ocupacion = $_POST["ocupacion"];
-    $clasificacion_riesgo = $_POST["clasificacion_riesgo"];
+    $clasificacion_riesgo = $_POST["clasificacion_riesgo"] ? $_POST["clasificacion_riesgo"] : '';
     $agencia = $_POST["agencia"]; //nuevo
     // nuego de departamento provincia y distrito
-    $departamento = $_POST["departamento"];
-    $provincia = $_POST["provincia"];
-    $distrito = $_POST["distrito"];
+    $departamento = $_POST["departamento"] ? $_POST["departamento"] : '';
+    $provincia = $_POST["provincia"] ? $_POST["provincia"] : '';
+    $distrito = $_POST["distrito"] ? $_POST["distrito"] : '';
 
     $tipo_credito = $_POST["tipo_credito"]; //nuevo
     $estado = $_POST["estado"]; //nuevo
@@ -271,7 +271,7 @@ $conn->close();
                         </div>
                     </div>
                     <div class="row mb-2">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <label class="fw-bold">Tipo Crédito</label>
                             <select name="tipo_credito" required class="form-control">
                                 <option value="" disabled selected>Seleccione una opción</option>
@@ -281,7 +281,7 @@ $conn->close();
                                 <option value="Anual">Anual</option>
                             </select>
                         </div>
-                        <div class="col-md-4">
+                        <!-- <div class="col-md-4">
                             <label class="fw-bold">Clas. Riesgo</label>
                             <select name="clasificacion_riesgo" required class="form-control">
                                 <option value="" disabled selected>Seleccione una opción</option>
@@ -290,8 +290,8 @@ $conn->close();
                                 <option value="DEF">DEF</option>
                                 <option value="PER">PER</option>
                             </select>
-                        </div>
-                        <div class="col-md-4">
+                        </div> -->
+                        <div class="col-md-6">
                             <label class="fw-bold">Estado</label>
                             <select name="estado" required class="form-control">
                                 <option value="" disabled selected>Estado</option>
@@ -303,7 +303,7 @@ $conn->close();
                     <div class="row mb-2">
                         <div class="col-md-3">
                             <label class="fw-bold">Monto Créd.</label>
-                            <input type="number" name="monto" required class="form-control" placeholder="Monto Créd.">
+                            <input type="number" name="monto" required step="0.01" class="form-control" placeholder="Monto Créd.">
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Fecha Desemb.</label>
@@ -311,7 +311,7 @@ $conn->close();
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Saldo Créd.</label>
-                            <input type="number" name="saldo" required class="form-control" placeholder="Saldo Créd.">
+                            <input type="number" name="saldo" required step="0.01" class="form-control" placeholder="Saldo Créd.">
                         </div>
                         <div class="col-md-3">
                             <label class="fw-bold">Fec. Vencim.</label>
@@ -319,8 +319,12 @@ $conn->close();
                         </div>
                     </div>
                 </div>
-                <!-- Garante 1 (siempre visible) -->
-                <div id="garante1" class="col-md-12">
+                <!-- para que aparesca aval -->
+                <div id="boton-agregar-garante1" class="mb-1">
+                    <button type="button" class="btn btn-primarya" onclick="mostrarGarante(1)">Agregar Aval 1</button>
+                </div>
+                <!-- Garante 1 (oculto inicialmente) -->
+                <div id="garante1" class="col-md-12" style="display: none;">
                     <div class="titulo-seccion">
                         <h5>Información del Aval 1</h5>
                     </div>
@@ -368,7 +372,7 @@ $conn->close();
                         <label class="fw-bold">Referencia 2</label>
                         <input type="text" name="referencia2_garante" class="form-control" placeholder="Referencia 2">
                     </div>
-                    <div class="mb-2">
+                    <!-- <div class="mb-2">
                         <label class="fw-bold">Clasificación de Riesgo</label>
                         <select name="clasificacion_riesgo_garante" class="form-control">
                             <option value="" disabled selected>Seleccione una opción</option>
@@ -377,13 +381,14 @@ $conn->close();
                             <option value="DEF">DEF</option>
                             <option value="PER">PER</option>
                         </select>
-                    </div>
-
+                    </div> -->
                     <div class="mt-2">
-                        <button type="button" class="btn btn-primarya" onclick="mostrarGarante(2)">Agregar Aval 2</button>
+                        <div class="d-flex justify-content-end ">
+                            <button type="button" class="btn btn-primarya" onclick="mostrarGarante(2)">Agregar Aval 2</button>
+                            <button type="button" class="btn btn-danger" onclick="cancelarGarante(1)">Cancelar Aval</button>
+                        </div>
                     </div>
                 </div>
-
                 <!-- Garante 2 (oculto inicialmente) -->
                 <div id="garante2" class="col-md-12 mt-1" style="display: none;">
                     <div class="titulo-seccion">
@@ -434,7 +439,7 @@ $conn->close();
                         <label class="fw-bold">Referencia 2</label>
                         <input type="text" name="referencia2_garante_2" class="form-control" placeholder="Referencia 2">
                     </div>
-                    <div class="mb-2">
+                    <!-- <div class="mb-2">
                         <label class="fw-bold">Clasificación de Riesgo</label>
                         <select name="clasificacion_riesgo_garante_2" class="form-control">
                             <option value="" disabled selected>Seleccione una opción</option>
@@ -443,7 +448,7 @@ $conn->close();
                             <option value="DEF">DEF</option>
                             <option value="PER">PER</option>
                         </select>
-                    </div>
+                    </div> -->
 
                     <div class="mt-2">
                         <div class="d-flex justify-content-end ">
@@ -503,7 +508,7 @@ $conn->close();
                         <label class="fw-bold">Referencia 2</label>
                         <input type="text" name="referencia2_garante_3" class="form-control" placeholder="Referencia 2">
                     </div>
-                    <div class="mb-2">
+                    <!-- <div class="mb-2">
                         <label class="fw-bold">Clasificación de Riesgo</label>
                         <select name="clasificacion_riesgo_garante_3" class="form-control">
                             <option value="" disabled selected>Seleccione una opción</option>
@@ -512,7 +517,7 @@ $conn->close();
                             <option value="DEF">DEF</option>
                             <option value="PER">PER</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="mt-2">
                         <div class="d-flex justify-content-end">
                             <button type="button" class="btn btn-danger" onclick="cancelarGarante(3)">Cancelar Aval</button>
@@ -562,7 +567,6 @@ $conn->close();
         </form>
     </div>
     <script src="ubigeo/ubigeo_ccpp.json"></script>
-    <script src="ubigeos_peru/js/ubigeo.js"></script>
     <script src="../../inactividad.js"></script>
 </body>
 

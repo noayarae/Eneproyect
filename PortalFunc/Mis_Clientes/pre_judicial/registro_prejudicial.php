@@ -337,7 +337,7 @@ $conn->close();
                                     Monto Amortizado:
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="number" name="monto_amortizado" class="form-control">
+                                    <input type="number" name="monto_amortizado" step="0.01" class="form-control">
                                 </div>
                             </div>
                             <div class="row mb-2 align-items-center">
