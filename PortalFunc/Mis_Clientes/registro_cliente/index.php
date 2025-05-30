@@ -65,19 +65,19 @@
                     <div class="row">
                         <div class="col-md-2">
                             <div class="mb-2">
-                                
+
                                 <input type="number" id="dniInput" name="dni" class="form-control" placeholder="DNI" oninput="buscarClientePorDNI()">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-2">
-                                
+
                                 <input type="text" name="nombre" class="form-control" placeholder="Nombre">
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="mb-2">
-                                
+
                                 <input type="text" name="apellidos" class="form-control" placeholder="Apellidos">
                             </div>
                         </div>
@@ -235,18 +235,18 @@
         function cargarDatosClientes(data) {
             const listaClientes = document.getElementById('listaClientes');
             listaClientes.innerHTML = data.map(cliente => `
-        <tr>
-            <td>${cliente.nombre}</td>
-            <td>${cliente.apellidos}</td>
-            <td>${cliente.dni}</td>
-            <td>${cliente.telefono}</td>
-            <td>${formatNumber(parseFloat(cliente.monto))}</td>
-            <td>${formatNumber(parseFloat(cliente.saldo))}</td>
-            <td>${cliente.fecha_clave}</td>
-            <td>${cliente.accion_fecha_clave}</td>
-            <td><button onclick="mostrarCliente('${cliente.dni}')">Ver</button></td>
-        </tr>
-            `).join('');
+            <tr>
+                <td>${cliente.nombre}</td>
+                <td>${cliente.apellidos}</td>
+                <td>${cliente.dni}</td>
+                <td>${cliente.telefono}</td>
+                <td>${formatNumber(parseFloat(cliente.monto))}</td>
+                <td>${formatNumber(parseFloat(cliente.saldo))}</td>
+                <td>${cliente.fecha_clave}</td>
+                <td>${cliente.accion_fecha_clave}</td>
+                <td><button onclick="mostrarCliente('${cliente.dni}')">Ver</button></td>
+            </tr>
+                `).join('');
         }
 
         // Llamar a cargarDatosClientes con los datos obtenidos
@@ -307,7 +307,6 @@
                 });
         }
 
-
         // Cargar la lista de clientes al inicio
         window.onload = function() {
             fetch('buscar_clientes.php')
@@ -333,11 +332,35 @@
             <td>${cliente.telefono}</td>
             <td>${formatNumber(parseFloat(cliente.monto))}</td>
             <td>${formatNumber(parseFloat(cliente.saldo))}</td>
-            <td>${formatDate(cliente.fecha_clave)}</td>
+            <td>${(cliente.fecha_clave)}</td>
             <td>${cliente.accion_fecha_clave}</td>
-            <td style="text-align: center;"><button onclick="mostrarCliente('${cliente.dni}')">Ver</button></td>
+            <td style="text-align: center;">
+                <button onclick="mostrarCliente('${cliente.dni}')">Ver</button>
+                <button onclick="verHistorialDirecto('${cliente.dni}')">Histor.</button>
+            </td>
         </tr>
         `).join('');
+        }
+
+        function verHistorialDirecto(dni) {
+            if (dni) {
+                fetch('../conexion_db/obtener_id_cliente.php?dni=' + encodeURIComponent(dni))
+                    .then(response => {
+                        if (!response.ok) throw new Error('Error en la red');
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.id_cliente) {
+                            window.location.href = '../historial/record.php?id_cliente=' + encodeURIComponent(data.id_cliente);
+                        } else {
+                            alert("No se encontró el ID del cliente.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert("Hubo un error al obtener el ID del cliente.");
+                    });
+            }
         }
     </script>
 </body>

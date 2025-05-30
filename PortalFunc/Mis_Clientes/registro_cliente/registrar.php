@@ -566,7 +566,6 @@ $conn->close();
             </div>
         </form>
     </div>
-    <script src="ubigeo/ubigeo_ccpp.json"></script>
     <script src="../../inactividad.js"></script>
 </body>
 
