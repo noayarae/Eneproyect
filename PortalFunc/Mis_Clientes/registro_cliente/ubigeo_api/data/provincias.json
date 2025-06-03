@@ -1,0 +1,38 @@
+{
+    "05": [
+        {"id": "0501", "nombre": "Huamanga"},
+        {"id": "0502", "nombre": "Cangallo"},
+        {"id": "0503", "nombre": "Huanca Sancos"},
+        {"id": "0504", "nombre": "Huanta"},
+        {"id": "0505", "nombre": "La Mar"},
+        {"id": "0506", "nombre": "Lucanas"},
+        {"id": "0507", "nombre": "Parinacochas"},
+        {"id": "0508", "nombre": "Paucar del Sara Sara"},
+        {"id": "0509", "nombre": "Sucre"},
+        {"id": "0510", "nombre": "Víctor Fajardo"},
+        {"id": "0511", "nombre": "Vilcas Huamán"}
+    ],
+    "15": [
+        {"id": "1501", "nombre": "Lima"},
+        {"id": "1502", "nombre": "Barranca"},
+        {"id": "1503", "nombre": "Cajatambo"},
+        {"id": "1504", "nombre": "Canta"},
+        {"id": "1505", "nombre": "Cañete"},
+        {"id": "1506", "nombre": "Huaral"},
+        {"id": "1507", "nombre": "Huarochirí"},
+        {"id": "1508", "nombre": "Huaura"},
+        {"id": "1509", "nombre": "Oyón"},
+        {"id": "1510", "nombre": "Yauyos"}
+    ],
+    "12": [
+        {"id": "1201", "nombre": "Huancayo"},
+        {"id": "1202", "nombre": "Concepción"},
+        {"id": "1203", "nombre": "Chanchamayo"},
+        {"id": "1204", "nombre": "Jauja"},
+        {"id": "1205", "nombre": "Junín"},
+        {"id": "1206", "nombre": "Satipo"},
+        {"id": "1207", "nombre": "Tarma"},
+        {"id": "1208", "nombre": "Yauli"},
+        {"id": "1209", "nombre": "Chupaca"}
+    ]
+}

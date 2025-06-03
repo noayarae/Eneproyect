@@ -25,3 +25,8 @@
 [31-May-2025 16:41:41 Europe/Berlin] Datos usuario: {"id":129,"nombre":"Pablo","apellido":"Perez Sanches","correo":"pablo15paredes@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Pablo1234*$","dni":"73784565","password":"$2y$10$q5gU\/Qo57RGLAUaw5KHRy.n.EJRbpIOjaedhYKEJPRxTkiz4Xp7.a","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
 [31-May-2025 16:41:42 Europe/Berlin] Registrando acceso: {"user_id":129,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-05-31 16:41:42"}
 [31-May-2025 16:41:42 Europe/Berlin] Autenticación exitosa para: Pablo1234*$
+[02-Jun-2025 23:44:24 Europe/Berlin] [2025-06-02 23:44:24] === INICIO PROCESAR_LOGIN ===
+[02-Jun-2025 23:44:24 Europe/Berlin] Preparando consulta para usuario: Juanperez$$1234*
+[02-Jun-2025 23:44:24 Europe/Berlin] Datos usuario: {"id":133,"nombre":"Jose","apellido":"Badajos G\u00f3mez","correo":"bada@gmail.com","cargo":"Gestor de Cr\u00e9ditos","usuario":"Juanperez$$1234*","dni":"89562356","password":"$2y$10$outpxo\/gqf5SYqpXt4o0i.Y4GR\/psvSef4fZDii6Rc2\/UYg6aBtTe","reset_token":null,"ultimo_cambio_pass":null,"estado":"aprobado"}
+[02-Jun-2025 23:44:24 Europe/Berlin] Registrando acceso: {"user_id":133,"ip":"::1","user_agent":"Mozilla\/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/136.0.0.0 Safari\/537.36","fecha":"2025-06-02 23:44:24"}
+[02-Jun-2025 23:44:24 Europe/Berlin] Autenticación exitosa para: Juanperez$$1234*

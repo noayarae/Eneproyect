@@ -389,80 +389,66 @@ function cancelarGarante(numero) {
     }
 }
 
-
 /* de aqui para departamento provincia  */
-let dataCCPP = [];
+let provincias = {};
+let distritos = {};
 
-fetch('ubigeo/ubigeo_ccpp.json')
-  .then(res => res.json())
-  .then(data => {
-    dataCCPP = data;
-    cargarDepartamentos();
-  })
-  .catch(err => console.error('Error cargando los datos:', err));
+// Cargar departamentos
+fetch('ubigeo_api/data/departamentos.json')
+    .then(res => res.json())
+    .then(data => {
+        const departamentoSelect = document.getElementById('departamento');
+        data.forEach(dep => {
+            departamentoSelect.innerHTML += `<option value="${dep.id}">${dep.nombre}</option>`;
+        });
+    });
 
+// Cargar provincias y distritos
+fetch('ubigeo_api/data/provincias.json')
+    .then(res => res.json())
+    .then(data => provincias = data);
 
-function capitalizarPalabra(texto) {
-  return texto.toLowerCase().replace(/\b\w/g, letra => letra.toUpperCase());
-}
+fetch('ubigeo_api/data/distritos.json')
+    .then(res => res.json())
+    .then(data => distritos = data);
 
-function cargarDepartamentos() {
-  const departamentoSelect = document.getElementById('departamento');
-  const departamentos = [...new Set(dataCCPP.map(item => item.departamento))];
-  
-  departamentos.sort().forEach(dep => {
-    const option = document.createElement('option');
-    option.value = dep;
-    option.textContent = capitalizarPalabra(dep); // se muestra con capitalización
-    departamentoSelect.appendChild(option);
-  });
-
-  departamentoSelect.disabled = false;
-}
-
+// Evento para provincias
 document.getElementById('departamento').addEventListener('change', function () {
-  const provinciaSelect = document.getElementById('provincia');
-  const distritoSelect = document.getElementById('distrito');
+    const provSelect = document.getElementById('provincia');
+    const distSelect = document.getElementById('distrito');
+    const depID = this.value;
 
-  provinciaSelect.innerHTML = '<option value="">Seleccione provincia</option>';
-  distritoSelect.innerHTML = '<option value="">Seleccione distrito</option>';
+    // Limpiar selects
+    provSelect.innerHTML = '<option value="" disabled selected>Seleccione una provincia</option>';
+    distSelect.innerHTML = '<option value="" disabled selected>Seleccione un distrito</option>';
+    distSelect.disabled = true;
 
-  const selectedDep = this.value;
-  const provincias = [...new Set(dataCCPP
-    .filter(item => item.departamento === selectedDep)
-    .map(item => item.provincia))];
-
-  provincias.sort().forEach(prov => {
-    const option = document.createElement('option');
-    option.value = prov;
-    option.textContent = capitalizarPalabra(prov);
-    provinciaSelect.appendChild(option);
-  });
-
-  provinciaSelect.disabled = false;
-  distritoSelect.disabled = true;
+    // Llenar provincias
+    if (provincias[depID]) {
+        provincias[depID].forEach(prov => {
+            provSelect.innerHTML += `<option value="${prov.id}">${prov.nombre}</option>`;
+        });
+        provSelect.disabled = false;
+    } else {
+        provSelect.disabled = true;
+    }
 });
 
+// Evento para distritos
 document.getElementById('provincia').addEventListener('change', function () {
-  const distritoSelect = document.getElementById('distrito');
+    const distSelect = document.getElementById('distrito');
+    const provID = this.value;
 
-  distritoSelect.innerHTML = '<option value="">Seleccione distrito</option>';
+    distSelect.innerHTML = '<option value="" disabled selected>Seleccione un distrito</option>';
 
-  const dep = document.getElementById('departamento').value;
-  const prov = this.value;
-
-  const distritos = [...new Set(dataCCPP
-    .filter(item => item.departamento === dep && item.provincia === prov)
-    .map(item => item.distrito))];
-
-  distritos.sort().forEach(dist => {
-    const option = document.createElement('option');
-    option.value = dist;
-    option.textContent = capitalizarPalabra(dist);
-    distritoSelect.appendChild(option);
-  });
-
-  distritoSelect.disabled = false;
+    if (distritos[provID]) {
+        distritos[provID].forEach(dist => {
+            distSelect.innerHTML += `<option value="${dist.id}">${dist.nombre}</option>`;
+        });
+        distSelect.disabled = false;
+    } else {
+        distSelect.disabled = true;
+    }
 });
 
 /* esta parte ultimo */
